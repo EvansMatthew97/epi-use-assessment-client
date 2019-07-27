@@ -1,0 +1,54 @@
+$employee-width: 160px;
+$border-radius: 10px;
+$connector-width: 4px;
+
+:host {
+  display: block;
+  position: relative;
+}
+
+.employee {
+  position: relative;
+  width: $employee-width;
+  background: #eee;
+  border-radius: $border-radius;
+  padding: 20px;
+
+  &.selected {
+    border: 2px solid blueviolet;
+  }
+}
+
+.sub-employee {
+  display: block;
+  position: relative;
+  margin-left: calc(#{$employee-width} + 15px);
+  margin-top: 20px;
+
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+
+  &::before,
+  &::after {
+    display: block;
+    content: '';
+    position: absolute;
+    left: calc(#{$employee-width} / 2 * -1);
+    width: calc(#{$employee-width} / 2);
+    height: 50%;
+    border: $connector-width solid red;
+    border-bottom-left-radius: $border-radius;
+    border-top: none;
+    border-right: none;
+  }
+  
+  &::after {
+    border-bottom: none;
+    bottom: 0;
+    height: calc(50% + $border-radius);
+    border-bottom-left-radius: 0;
+  }
+}

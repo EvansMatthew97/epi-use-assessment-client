@@ -90,19 +90,7 @@ export class ApiService {
    * @param params The body of the post
    */
   public async post(url: string, params: { [key: string]: any }): Promise<any> {
-    const headers = await this.createAuthHeaders();
-
-    try {
-      return await this.httpClient.post(`${this.baseUrl}${url}`, params, {
-        headers,
-      }).toPromise();
-    } catch (error) {
-      if (error.status !== 401) {
-        throw error;
-      }
-      this.$authStateChange.next(false);
-      throw new AuthException();
-    }
+    return await this.request('POST', url, params);
   }
 
   /**
@@ -116,12 +104,22 @@ export class ApiService {
       .join('&')
     }`;
 
+    return await this.request('GET', urlWithParams, {});
+  }
+
+  private async request(method: 'GET' | 'POST', url: string, params: { [s: string]: any }): Promise<any> {
     const headers = await this.createAuthHeaders();
 
     try {
-      return await this.httpClient.get(urlWithParams, {
-        headers,
-      }).toPromise();
+      if (method === 'GET') {
+        return await this.httpClient.get(url, {
+          headers,
+        }).toPromise();
+      } else if (method === 'POST') {
+        return await this.httpClient.post(url, params, {
+          headers,
+        }).toPromise();
+      }
     } catch (error) {
       if (error.status !== 401) {
         throw error;
