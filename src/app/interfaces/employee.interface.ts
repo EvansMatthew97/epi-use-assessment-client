@@ -6,4 +6,5 @@ export interface Employee {
   salary: number;
   oversees: Employee[];
   reportsTo?: number;
+  role: number;
 }

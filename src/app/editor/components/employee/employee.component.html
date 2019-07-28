@@ -2,6 +2,7 @@
   [class.selected]="employee.id === selectedId"
   [class.not-old-enough]="!isOlderThanDate()"
   [class.searched-for]="isSearchedFor()"
+  [class.is-root]="!employee.reportsTo"
   (click)="clickEmployee(employee)"
 >
   <div class="title"><b>{{ employee.name }} {{ employee.surname }}</b> (ID: {{ employee.id }})</div>

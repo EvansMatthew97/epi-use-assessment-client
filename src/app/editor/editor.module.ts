@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { ApiModule } from '../api/api.module';
 import { MatFormFieldModule, MatAutocompleteModule, MatSliderModule, MatDatepickerModule, MatButtonModule, MatNativeDateModule, MatInputModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
     }]),
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+
     Ng2PanZoomModule,
 
     MatFormFieldModule,

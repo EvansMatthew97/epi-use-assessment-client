@@ -6,7 +6,7 @@
         [selectedId]="selectedId"
         [olderThan]="employeesOlderThan"
         [searchedEmployees]="searchedEmployees"
-        (selectEmployee)="selectEmployee($event)"
+        (selectEmployee)="selectEmployee($event.id)"
       ></app-employee>
     </div>
   </pan-zoom>
@@ -44,9 +44,77 @@
   </div>
 </div>
 <div class="sidebar">
-  <div class="sidebar-section sidebar-employee-properties">
+  <div class="sidebar-section employee-properties">
     <div class="sidebar-section-header">
-      <div class="sidebar-section-title">Employee</div>
+      <div class="sidebar-section-title">Employee Details</div>
+      <button mat-button (click)="addEmployee()">Add</button>
+    </div>
+    <div class="sidebar-section-body">
+      <p *ngIf="selectedId == null">
+        Select an employee to edit their details
+      </p>
+      <form *ngIf="selectedId != null || creatingEmployee" [formGroup]="employeeDetailsFormGroup" (submit)="saveEmployee()">
+        <div>
+          <mat-form-field>
+            <mat-label>Employee number</mat-label>
+            <input matInput formControlName="employeeNumber" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Surname</mat-label>
+            <input matInput formControlName="surname" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Birthdate</mat-label>
+            <input matInput [matDatepicker]="birthdatePicker" formControlName="birthdate" />
+            <mat-datepicker-toggle matSuffix [for]="birthdatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #birthdatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Salary</mat-label>
+            <input matInput type="number" formControlName="salary" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Role</mat-label>
+            <input matInput type="number" formControlName="role" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Reports to</mat-label>
+            <input matInput type="number" formControlName="reportsTo" />
+          </mat-form-field>
+        </div>
+        <div class="save-button-container">
+          <button mat-stroked-button color="warn" (click)="deleteEmployee()">Delete</button>
+          <button type="submit" mat-flat-button color="primary" [disabled]="!employeeDetailsFormGroup.valid">Save</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="sidebar-section roles">
+      <div class="sidebar-section-header">
+        <div class="sidebar-section-title">Employee Roles</div>
+        <button mat-button (click)="addRole()">Add</button>
+      </div>
+      <div class="sidebar-section-body">
+        <div class="employee-role sidebar-item" *ngFor="let role of employeeRoles">
+          <input class="sidebar-editable" type="text" [value]="role.name" (blur)="updateRole(role.id, $event.target.value)" />
+        </div>
+      </div>
     </div>
   </div>
 </div>

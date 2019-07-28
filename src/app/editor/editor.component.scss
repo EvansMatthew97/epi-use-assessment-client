@@ -36,10 +36,66 @@ $sidebar-width: 300px;
 
 .sidebar {
   position: absolute;
-  background: #ddd;
+  background: #f6f6f6;
   top: 0;
   right: 0;
   bottom: 0;
   width: $sidebar-width;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
+
+  .sidebar-section {
+    .sidebar-section-header,
+    .sidebar-section-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      background: #efefef;
+      padding: 5px 10px;
+      border-bottom: 1px solid #ccc;
+      border-top: 1px solid #ccc;
+    }
+    .sidebar-section-body {
+      padding: 10px;
+      mat-form-field {
+        display: block;
+        width: auto;
+      }
+      .sidebar-item {
+        border-bottom: 1px solid #ccc;
+        margin-left: -10px;
+        margin-right: -10px;
+        padding: 10px;
+        &:first-child {
+          border-top: 1px solid #ccc;
+        }
+      }
+      .sidebar-editable {
+        background: transparent;
+        font-size: inherit;
+        font-family: inherit;
+        border: none;
+        padding: 5px 0;
+        &:focus {
+          background: #fff;
+        }
+      }
+    }
+  }
+
+  .employee-properties {
+    .save-button-container {
+      text-align: right;
+    }
+  }
+
+  .roles {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .sidebar-section-body {
+      height: 200px;
+      overflow-y: scroll;
+    }
+  }
 }
