@@ -1,0 +1,41 @@
+$sidebar-width: 300px;
+
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: $sidebar-width;
+  background: #ccc;
+
+  .filters {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    .filter {
+      background: #fff;
+      border-radius: 5px;
+      padding: 0 10px;
+      margin-top: 10px;
+      
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+
+  .main-canvas {
+    padding: 40px;
+  }
+}
+
+.sidebar {
+  position: absolute;
+  background: #ddd;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: $sidebar-width;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}

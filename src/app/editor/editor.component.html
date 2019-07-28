@@ -1,10 +1,52 @@
-<div style="position: absolute; top: 0; left: 0; bottom: 0; right: 300px; background: #ccc;">
+<div class="main">
   <pan-zoom [config]="zoomConfig">
-    <app-employee *ngFor="let employee of hierarchy"
-      [employee]="employee"
-      [selectedId]="selectedId"
-      (selectEmployee)="selectEmployee($event)"
-    ></app-employee>
+    <div class="main-canvas">
+      <app-employee *ngFor="let employee of hierarchy"
+        [employee]="employee"
+        [selectedId]="selectedId"
+        [olderThan]="employeesOlderThan"
+        [searchedEmployees]="searchedEmployees"
+        (selectEmployee)="selectEmployee($event)"
+      ></app-employee>
+    </div>
   </pan-zoom>
+
+  <div class="filters">
+    <!-- search filter -->
+    <div class="filter search">
+      <mat-form-field>
+        <mat-label>Search ID or name</mat-label>
+        <input matInput [(ngModel)]="searchTerm"
+          (keyup)="searchEmployees()"
+          (change)="searchEmployees()"
+          [matAutocomplete]="searchComplete"
+        />
+        <mat-autocomplete #searchComplete="matAutocomplete"
+          (optionSelected)="searchEmployees()"
+        >
+          <mat-option *ngFor="let employee of searchedEmployees" [value]="employee.id">
+            {{ employee.name }} {{ employee.surname }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <!-- date filter -->
+    <div class="filter date-filter">
+      <mat-form-field>
+        <mat-label>Employees older than</mat-label>
+        <input matInput [matDatepicker]="oldestBirthdatePicker"
+          [(ngModel)]="employeesOlderThan"
+        />
+        <mat-datepicker-toggle matSuffix [for]="oldestBirthdatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #oldestBirthdatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
 </div>
-<div class="sidebar" style="position: absolute; background: #ddd; top: 0; right: 0; bottom: 0; width: 300px"></div>
+<div class="sidebar">
+  <div class="sidebar-section sidebar-employee-properties">
+    <div class="sidebar-section-header">
+      <div class="sidebar-section-title">Employee</div>
+    </div>
+  </div>
+</div>

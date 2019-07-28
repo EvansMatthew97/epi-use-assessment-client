@@ -1,13 +1,19 @@
 <div *ngIf="employee" class="employee"
   [class.selected]="employee.id === selectedId"
+  [class.not-old-enough]="!isOlderThanDate()"
+  [class.searched-for]="isSearchedFor()"
   (click)="clickEmployee(employee)"
 >
-  <div><b>{{ employee.name }} {{ employee.surname }}</b> (ID: {{ employee.id }})</div>
+  <div class="title"><b>{{ employee.name }} {{ employee.surname }}</b> (ID: {{ employee.id }})</div>
   <div>{{ employee.birthdate | date:'yyyy-MM-dd' }}</div>
   <div>{{ employee.salary | currency:'R' }}</div>
 </div>
-<app-employee class="sub-employee" *ngFor="let emp of employee.oversees"
-  [employee]="emp"
-  [selectedId]="selectedId"
-  (selectEmployee)="clickEmployee($event)"
-></app-employee>
+<div class="sub-employees" *ngIf="employee.oversees.length">
+  <app-employee class="sub-employee" *ngFor="let emp of employee.oversees"
+    [employee]="emp"
+    [selectedId]="selectedId"
+    [olderThan]="olderThan"
+    [searchedEmployees]="searchedEmployees"
+    (selectEmployee)="clickEmployee($event)"
+  ></app-employee>
+</div>

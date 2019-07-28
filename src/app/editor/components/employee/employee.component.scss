@@ -1,6 +1,9 @@
-$employee-width: 160px;
-$border-radius: 10px;
+$employee-width: 140px;
+$employee-height: 50px;
+$border-radius: 5px;
 $connector-width: 4px;
+$connector-color: #999;
+$employee-margin-top: 15px;
 
 :host {
   display: block;
@@ -10,45 +13,71 @@ $connector-width: 4px;
 .employee {
   position: relative;
   width: $employee-width;
+  height: $employee-height;
   background: #eee;
   border-radius: $border-radius;
-  padding: 20px;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 2px solid #bbb;
 
-  &.selected {
-    border: 2px solid blueviolet;
+  &::before {
+    display: block;
+    position: absolute;
+    content: '';
+    height: $connector-width;
+    width: calc(#{$employee-width} / 2);
+    background: $connector-color;
+    left: calc(#{$employee-width} / 2 * -1);
+    top: calc(50% - #{$connector-width});
   }
-}
 
-.sub-employee {
-  display: block;
-  position: relative;
-  margin-left: calc(#{$employee-width} + 15px);
-  margin-top: 20px;
-
-  &:last-child {
-    &::after {
+  &.root {
+    &::before {
       display: none;
     }
   }
 
-  &::before,
-  &::after {
-    display: block;
-    content: '';
-    position: absolute;
-    left: calc(#{$employee-width} / 2 * -1);
-    width: calc(#{$employee-width} / 2);
-    height: 50%;
-    border: $connector-width solid red;
-    border-bottom-left-radius: $border-radius;
-    border-top: none;
-    border-right: none;
+  &.selected {
+    border: 2px solid hsl(330, 100%, 71%);
   }
-  
-  &::after {
-    border-bottom: none;
-    bottom: 0;
-    height: calc(50% + $border-radius);
-    border-bottom-left-radius: 0;
+
+  &.not-old-enough {
+    opacity: 0.4;
+  }
+
+  &.searched-for {
+    border: 2px dashed hsl(330, 100%, 71%);
+  }
+
+  .title {
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+}
+
+.sub-employees {
+  margin-left: calc(#{$employee-width} + 15px);
+
+  &::before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: $connector-width;
+    top: calc(#{$employee-height} + #{$employee-margin-top} + 10px);
+    bottom: calc(#{$employee-height} / 2 + 10px);
+    background: $connector-color;
+    left: calc(#{$employee-width} / 2);
+  }
+
+  .sub-employee {
+    display: block;
+    position: relative;
+    margin-top: $employee-margin-top;
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
   }
 }
