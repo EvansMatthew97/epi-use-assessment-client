@@ -4,6 +4,9 @@ import { Employee } from '../interfaces/employee.interface';
 import { ApiService } from '../api/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmployeeRole } from '../interfaces/employee-role.interface';
+import { MatDialog } from '@angular/material';
+import { ConfirmEmployeeDeleteDialogComponent, ConfirmDeleteEmployeeData } from './dialogs/confirm-employee-delete.component';
+import { EmployeeRolestatsDialogComponent } from './dialogs/employee-role-stats-dialog.component';
 
 @Component({
   selector: 'app-editor',
@@ -12,10 +15,7 @@ import { EmployeeRole } from '../interfaces/employee-role.interface';
 })
 export class EditorComponent implements OnInit {
   zoomConfig: PanZoomConfig = new PanZoomConfig({
-    // zoomLevels: 10,
-    // freeMouseWheelFactor: 0.01,
-    // dragMouseButton: 'left',
-    // keepInBounds: true,
+    freeMouseWheelFactor: 0.01,
   });
 
   hierarchy: Employee[] = [];
@@ -45,6 +45,7 @@ export class EditorComponent implements OnInit {
 
   constructor(
     private readonly api: ApiService,
+    private readonly dialog: MatDialog,
   ) {}
 
   ngOnInit() {
@@ -156,12 +157,26 @@ export class EditorComponent implements OnInit {
     }
   }
 
-  async deleteEmployee() {
+  deleteEmployee() {
     const employeeNumber = this.employeeDetailsFormGroup.get('employeeNumber').value;
-    await this.api.post('/employee/remove', {
-      employeeNumber,
+    const employee = this.employeeMap[employeeNumber];
+
+    const dialogRef = this.dialog.open(ConfirmEmployeeDeleteDialogComponent, {
+      data: {
+        employee,
+      } as ConfirmDeleteEmployeeData,
     });
-    await this.fetchData();
+    dialogRef.afterClosed().subscribe(async consented => {
+      console.log('closed', consented);
+      if (!consented) {
+        return;
+      }
+
+      await this.api.post('/employee/remove', {
+        employeeNumber,
+      });
+      await this.fetchData();
+    });
   }
 
   async addRole() {
@@ -177,5 +192,22 @@ export class EditorComponent implements OnInit {
       name,
     });
     await this.fetchData();
+  }
+
+  async showRoleStats() {
+    const roleStats = await this.api.get('/employee-role/highest-earning-by-role', {});
+
+    const stats = Object.keys(roleStats).map(roleId => ({
+      role: this.employeeRoleMap[roleId],
+      employee: this.employeeMap[roleStats[roleId].id],
+    }));
+
+    console.log(stats);
+
+    this.dialog.open(EmployeeRolestatsDialogComponent, {
+      data: {
+        stats,
+      },
+    });
   }
 }
