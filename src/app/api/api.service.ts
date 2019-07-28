@@ -12,14 +12,17 @@ export class AuthException {
 /**
  * Service for interacting with the server
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ApiService {
   private readonly baseUrl = environment.apiUrl;
-  public $authStateChange = new BehaviorSubject(false);
+  public readonly $authStateChange = new BehaviorSubject(false);
 
   constructor(
     private readonly httpClient: HttpClient,
   ) {
+    console.log('constructed api');
     this.verifyToken();
   }
 
@@ -33,15 +36,26 @@ export class ApiService {
         password,
       });
 
+      console.log('logged in', token);
+
       await this.setToken(token);
+      console.log('set token');
       this.$authStateChange.next(true);
+      console.log('next state');
       return true;
     } catch (error) {
-      if (error.status instanceof AuthException) {
+      if (error instanceof AuthException) {
         return false;
       }
       throw error;
     }
+  }
+
+  /**
+   * Check whether the app state is authenticated
+   */
+  public isAuthenticated(): boolean {
+    return this.$authStateChange.value;
   }
 
   /**
@@ -71,15 +85,19 @@ export class ApiService {
    * Saves a token to browser storage
    */
   private setToken(token: string): Promise<void> {
-    localStorage.setItem(TOKEN_PATH, token);
-    return Promise.resolve();
+    return new Promise(resolve => {
+      localStorage.setItem(TOKEN_PATH, token);
+      resolve();
+    });
   }
 
   /**
    * Retrieves token from browser storage
    */
   private getToken(): Promise<string> {
-    return Promise.resolve(localStorage.getItem(TOKEN_PATH));
+    return new Promise(resolve => {
+      resolve(localStorage.getItem(TOKEN_PATH));
+    });
   }
 
   /**
@@ -97,7 +115,7 @@ export class ApiService {
    * @param params parameters to be added to the url query
    */
   public async get(url: string, params: { [s: string]: any }): Promise<any> {
-    const urlWithParams = `${this.baseUrl}${url}?${Object.keys(params)
+    const urlWithParams = `${url}?${Object.keys(params)
       .map(param => `param=${params[param]}`)
       .join('&')
     }`;
@@ -108,6 +126,7 @@ export class ApiService {
   private async request(method: 'GET' | 'POST', url: string, params: { [s: string]: any }): Promise<any> {
     const headers = await this.createAuthHeaders();
 
+    url = `${this.baseUrl}${url}`;
     try {
       if (method === 'GET') {
         return await this.httpClient.get(url, {

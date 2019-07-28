@@ -3,6 +3,7 @@ import { EditorComponent } from './editor.component';
 import { CommonModule } from '@angular/common';
 import { Ng2PanZoomModule } from 'ng2-panzoom';
 import { RouterModule } from '@angular/router';
+import { EmployeeComponent } from './components/employee/employee.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [],
   declarations: [
+    EmployeeComponent,
     EditorComponent,
   ]
 })

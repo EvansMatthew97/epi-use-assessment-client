@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup">
+<form [formGroup]="formGroup" (submit)="submit()">
   <h1>Log in</h1>
   <div>
     <mat-form-field appearance="outline">
@@ -13,6 +13,8 @@
       <input matInput type="password" placeholder="Password" formControlName="password" />
     </mat-form-field>
   </div>
+
+  <div class="error" *ngIf="error">{{ error }}</div>
 
   <div class="login-button-container">
     <button type="submit" mat-flat-button color="accent" [disabled]="!formGroup.valid">

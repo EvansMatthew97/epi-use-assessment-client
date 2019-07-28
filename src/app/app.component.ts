@@ -1,8 +1,6 @@
-import { Component, NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from './api/api.service';
-import { Employee } from './interfaces/employee.interface';
-
-import { PanZoomConfig } from 'ng2-panzoom';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +8,18 @@ import { PanZoomConfig } from 'ng2-panzoom';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'client';
-  error = 'loading'; 
-
   constructor(
     private readonly api: ApiService,
-    private ngZone: NgZone,
+    private readonly router: Router,
   ) {
     this.api.$authStateChange.subscribe(isLoggedIn => {
-      if (isLoggedIn) {
-        console.log('logged in');
+      console.log('is logged in', isLoggedIn);
+      if (!isLoggedIn) {
+        console.log('navigating to login');
+        this.router.navigate(['login']);
+      } else {
+        console.log('navigating to editor');
+        this.router.navigate(['editor']);
       }
     });
   }

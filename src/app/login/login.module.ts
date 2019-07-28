@@ -5,6 +5,7 @@ import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/ma
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ApiModule } from '../api/api.module';
 
 @NgModule({
   imports: [
@@ -20,6 +21,8 @@ import { RouterModule } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+
+    ApiModule,
   ],
   declarations: [
     LoginComponent,
