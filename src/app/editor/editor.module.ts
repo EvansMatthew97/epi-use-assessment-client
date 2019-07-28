@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Ng2PanZoomModule } from 'ng2-panzoom';
 import { RouterModule } from '@angular/router';
 import { EmployeeComponent } from './components/employee/employee.component';
+import { ApiModule } from '../api/api.module';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { EmployeeComponent } from './components/employee/employee.component';
     }]),
     CommonModule,
     Ng2PanZoomModule,
+    ApiModule,
   ],
   providers: [],
   declarations: [
