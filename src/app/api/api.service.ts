@@ -22,7 +22,6 @@ export class ApiService {
   constructor(
     private readonly httpClient: HttpClient,
   ) {
-    console.log('constructed api');
     this.verifyToken();
   }
 
@@ -36,12 +35,9 @@ export class ApiService {
         password,
       });
 
-      console.log('logged in', token);
 
       await this.setToken(token);
-      console.log('set token');
       this.$authStateChange.next(true);
-      console.log('next state');
       return true;
     } catch (error) {
       if (error instanceof AuthException) {
@@ -151,8 +147,9 @@ export class ApiService {
    * bearer token.
    */
   private async createAuthHeaders(): Promise<HttpHeaders> {
-    const headers = new HttpHeaders();
-    headers.set('Authorization', `Bearer ${await this.getToken()}`);
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${await this.getToken()}`,
+    });
     return headers;
   }
 }
