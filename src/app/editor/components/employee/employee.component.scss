@@ -38,7 +38,7 @@ $employee-margin-top: 15px;
   }
 
   &.selected {
-    border: 2px solid hsl(330, 100%, 71%);
+    border: 2px solid hsl(330, 100%, 71%) !important;
   }
 
   &.not-old-enough {

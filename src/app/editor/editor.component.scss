@@ -18,7 +18,7 @@ $sidebar-width: 300px;
       border-radius: 5px;
       padding: 0 10px;
       margin-top: 10px;
-      
+
       mat-form-field {
         width: 100%;
       }
@@ -27,6 +27,10 @@ $sidebar-width: 300px;
 
   .main-canvas {
     padding: 40px;
+    background-image: url('/assets/images/grid.png');
+    background-repeat: repeat;
+    min-width: 100vw;
+    min-height: 100vw;
   }
 }
 
