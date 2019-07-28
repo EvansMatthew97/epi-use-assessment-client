@@ -1,0 +1,15 @@
+form {
+  width: 300px;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.login-button-container {
+  text-align: right;
+}

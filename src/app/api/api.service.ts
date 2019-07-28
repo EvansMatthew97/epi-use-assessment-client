@@ -12,9 +12,7 @@ export class AuthException {
 /**
  * Service for interacting with the server
  */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ApiService {
   private readonly baseUrl = environment.apiUrl;
   public $authStateChange = new BehaviorSubject(false);

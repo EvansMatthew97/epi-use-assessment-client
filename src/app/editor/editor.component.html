@@ -1,0 +1,10 @@
+<div style="position: absolute; top: 0; left: 0; bottom: 0; right: 300px; background: #ccc;">
+  <pan-zoom [config]="zoomConfig">
+    <app-employee *ngFor="let employee of hierarchy"
+      [employee]="employee"
+      [selectedId]="selectedId"
+      (selectEmployee)="selectEmployee($event)"
+    ></app-employee>
+  </pan-zoom>
+</div>
+<div class="sidebar" style="position: absolute; background: #ddd; top: 0; right: 0; bottom: 0; width: 300px"></div>
