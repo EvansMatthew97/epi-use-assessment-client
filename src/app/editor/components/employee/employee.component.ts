@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Employee } from 'src/app/interfaces/employee.interface';
+import { EmployeeRole } from '../../../interfaces/employee-role.interface';
 
 @Component({
   selector: 'app-employee',
@@ -13,6 +14,7 @@ export class EmployeeComponent implements OnInit {
 
   @Input() searchedEmployees: Employee[] = [];
   @Input() searchedId: number = null;
+  @Input() employeeRolesMap: {[id: number]: EmployeeRole};
 
   @Output() selectEmployee = new EventEmitter();
 

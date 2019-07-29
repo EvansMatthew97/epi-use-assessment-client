@@ -1,6 +1,7 @@
-$employee-width: 140px;
-$employee-height: 50px;
+$employee-width: 160px;
+$employee-height: 70px;
 $border-radius: 5px;
+$employee-border-width: 4px;
 $connector-width: 4px;
 $connector-color: #999;
 $employee-margin-top: 15px;
@@ -19,7 +20,7 @@ $employee-margin-top: 15px;
   border-radius: $border-radius;
   padding: 10px 12px;
   font-size: 14px;
-  border: 2px solid #bbb;
+  border: $employee-border-width solid #bbb;
 
   &::before {
     display: block;
@@ -39,7 +40,7 @@ $employee-margin-top: 15px;
   }
 
   &.selected {
-    border: 2px solid hsl(330, 100%, 71%) !important;
+    border: $employee-border-width solid hsl(330, 100%, 71%) !important;
   }
 
   &.not-old-enough {
@@ -47,7 +48,7 @@ $employee-margin-top: 15px;
   }
 
   &.searched-for {
-    border: 2px dashed hsl(330, 100%, 71%);
+    border: $employee-border-width dashed hsl(330, 100%, 71%);
   }
 
   .title {

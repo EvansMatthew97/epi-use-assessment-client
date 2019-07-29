@@ -7,6 +7,7 @@ import { EmployeeRole } from '../interfaces/employee-role.interface';
 import { MatDialog } from '@angular/material';
 import { ConfirmEmployeeDeleteDialogComponent, ConfirmDeleteEmployeeData } from './dialogs/confirm-employee-delete.component';
 import { EmployeeRolestatsDialogComponent } from './dialogs/employee-role-stats-dialog.component';
+import { ConfirmDeleteRoleDialogComponent } from './dialogs/confirm-delete-role-dialog.component';
 
 @Component({
   selector: 'app-editor',
@@ -43,6 +44,10 @@ export class EditorComponent implements OnInit {
     role: new FormControl('', Validators.required),
   });
 
+  roleSearchResults = [];
+  reportsToSearchResults = [];
+  saveEmployeeError = null;
+
   constructor(
     private readonly api: ApiService,
     private readonly dialog: MatDialog,
@@ -54,13 +59,13 @@ export class EditorComponent implements OnInit {
 
   async fetchData() {
     // fetch employee roles
-    this.employeeRoles = await this.api.get('/employee-role', {});
+    this.employeeRoles = (await this.api.get('/employee-role', {})).reverse();
     this.employeeRoleMap = this.employeeRoles.reduce((ob, role) => {
       ob[role.id] = role;
       return ob;
     }, {});
 
-    // fetch employeed
+    // fetch employees
     this.employees = await this.api.get('/employee', {});
     this.employeeMap = this.employees.reduce((ob, employee: Employee) => {
       ob[employee.id] = employee;
@@ -81,14 +86,13 @@ export class EditorComponent implements OnInit {
 
     console.log(this.hierarchy);
     console.log(this.employees);
-
-    this.searchEmployees();
   }
 
 
   selectEmployee(employeeId) {
     this.creatingEmployee = false;
     this.selectedId = employeeId;
+    this.saveEmployeeError = null;
 
     const employee = this.employees.find(emp => emp.id === employeeId);
 
@@ -105,6 +109,7 @@ export class EditorComponent implements OnInit {
   }
 
   searchEmployees() {
+    // if searching a number, then searching for employee number
     if (/\d+/.test(this.searchTerm)) {
       this.selectEmployee(parseInt(this.searchTerm, 10));
       this.searchedEmployees = [];
@@ -113,9 +118,15 @@ export class EditorComponent implements OnInit {
       this.selectedId = null;
     }
 
-    const searchTerm = this.searchTerm.toLowerCase();
-    console.log(searchTerm);
+    // if the user didn't search anything, return no employees rather than all
+    if (!this.searchTerm.trim().length) {
+      this.searchedEmployees = [];
+      return;
+    }
 
+    const searchTerm = this.searchTerm.toLowerCase();
+
+    // find all employees whose name contains the search term
     this.searchedEmployees = this.employees.filter(employee => {
       const fullName = `${employee.name} ${employee.surname}`.toLowerCase();
       return fullName.includes(searchTerm);
@@ -140,7 +151,7 @@ export class EditorComponent implements OnInit {
     }
 
     try {
-      await this.api.post('/employee/save', {
+      const employee = await this.api.post('/employee/save', {
         employeeNumber: group.get('employeeNumber').value,
         name: group.get('name').value,
         surname: group.get('surname').value,
@@ -151,10 +162,48 @@ export class EditorComponent implements OnInit {
       });
       await this.fetchData();
 
+      this.selectEmployee(employee.id);
       this.creatingEmployee = false;
+      this.saveEmployeeError = null;
     } catch (error) {
       console.error(error);
+      if (error.error.statusCode && error.error.statusCode === 400 && error.error.message) {
+        this.saveEmployeeError = error.error.message;
+      } else {
+        this.saveEmployeeError = 'An unknown error occurred';
+      }
     }
+  }
+
+  searchEmployeeRoles(searchTerm) {
+    searchTerm = searchTerm.toLowerCase();
+
+    this.roleSearchResults = this.employeeRoles.filter(
+      role => role.name.toLowerCase().includes(searchTerm)
+    );
+  }
+
+  searchEmployeeReportsTo(searchTerm) {
+    searchTerm = searchTerm.toLowerCase();
+
+    // if the user searched for a number, they are searching by id
+    if (/\d+/.test(searchTerm)) {
+      const employee = this.employeeMap[searchTerm];
+      if (!employee) {
+        return [];
+      }
+      return [employee];
+    }
+
+    let employees = this.employees.filter(employee => (
+      `${employee.name} ${employee.surname}`.toLowerCase().includes(searchTerm)
+    ));
+
+    if (!this.creatingEmployee) {
+      employees = employees.filter(employee => employee.id !== this.selectedId);
+    }
+
+    this.reportsToSearchResults = employees;
   }
 
   deleteEmployee() {
@@ -192,6 +241,31 @@ export class EditorComponent implements OnInit {
       name,
     });
     await this.fetchData();
+  }
+
+  removeRole(id) {
+    const otherRoles = this.employeeRoles.filter(role => role.id !== id);
+
+    const dialog = this.dialog.open(ConfirmDeleteRoleDialogComponent, {
+      data: {
+        roles: otherRoles,
+      }
+    });
+    dialog.afterClosed().subscribe(async replaceWith => {
+      console.log('close', replaceWith);
+      if (replaceWith === false) {
+        // user cancelled
+        return;
+      }
+
+      console.log(id, replaceWith);
+      await this.api.post('/employee-role/remove', {
+        roleToRemoveId: id,
+        roleToReplaceId: replaceWith,
+      });
+
+      await this.fetchData();
+    });
   }
 
   async showRoleStats() {

@@ -7,4 +7,5 @@ export interface Employee {
   oversees: Employee[];
   reportsTo?: number;
   role: number;
+  roleName: string;
 }

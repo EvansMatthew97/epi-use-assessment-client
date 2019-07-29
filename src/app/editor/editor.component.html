@@ -6,6 +6,7 @@
         [selectedId]="selectedId"
         [olderThan]="employeesOlderThan"
         [searchedEmployees]="searchedEmployees"
+        [employeeRolesMap]="employeeRoleMap"
         (selectEmployee)="selectEmployee($event.id)"
       ></app-employee>
     </div>
@@ -21,6 +22,7 @@
           (change)="searchEmployees()"
           [matAutocomplete]="searchComplete"
         />
+        <mat-icon matSuffix>search</mat-icon>
         <mat-autocomplete #searchComplete="matAutocomplete"
           (optionSelected)="searchEmployees()"
         >
@@ -94,6 +96,9 @@
             <input matInput type="number" formControlName="reportsTo" />
           </mat-form-field>
         </div>
+        <div class="error" *ngIf="saveEmployeeError">
+          {{ saveEmployeeError }}
+        </div>
         <div class="save-button-container">
           <button *ngIf="!creatingEmployee" type="button" mat-stroked-button color="warn" (click)="deleteEmployee()" matTooltip="Remove employee">Delete</button>
           <button type="submit" mat-flat-button color="primary" [disabled]="!employeeDetailsFormGroup.valid">Save</button>
@@ -104,8 +109,10 @@
     <div class="sidebar-section roles">
       <div class="sidebar-section-header">
         <div class="sidebar-section-title">Employee Roles</div>
-        <button mat-button (click)="showRoleStats()" matTooltip="View salary information">Stats</button>
-        <button mat-button (click)="addRole()" matTooltip="Add new role">Add</button>
+        <div>
+          <button mat-button (click)="showRoleStats()" matTooltip="View salary information">Stats</button>
+          <button mat-button (click)="addRole()" matTooltip="Add new role">Add</button>
+        </div>
       </div>
       <div class="sidebar-section-body">
         <div class="employee-role sidebar-item" *ngFor="let role of employeeRoles">
@@ -114,6 +121,12 @@
             [value]="role.name"
             (blur)="updateRole(role.id, $event.target.value)
           " />
+          <button mat-icon-button (click)="removeRole(role.id)"
+            [disabled]="employeeRoles.length <= 1"
+            matTooltip="Delete employee role"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </div>
     </div>
