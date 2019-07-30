@@ -15,7 +15,7 @@ Useful information regarding the use of endpoints can be found in the documentat
 
 This repository is configured to automatically deploy to Heroku, run unit tests and deploy documentation to Github pages.
 
-![System screenshot](https://imgur.com/xIPa902.jpg)
+![System screenshot](https://i.imgur.com/U3Eq3zu.png)
 
 ### Technology choices
 This project is coded using **Angular**. Angular provides a modular MVC framework for cross-platform web development. It has a rich ecosystem (npm) and large community support. Being web-based, it can be deployed to the web as well as desktop (using Electron.js) and mobile (using Cordova). This makes future deployment simpler using a single code base.
