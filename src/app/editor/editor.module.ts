@@ -4,8 +4,22 @@ import { CommonModule } from '@angular/common';
 import { Ng2PanZoomModule } from 'ng2-panzoom';
 import { RouterModule } from '@angular/router';
 import { EmployeeComponent } from './components/employee/employee.component';
-import { ApiModule } from '../api/api.module';
-import { MatFormFieldModule, MatAutocompleteModule, MatSliderModule, MatDatepickerModule, MatButtonModule, MatNativeDateModule, MatInputModule, MatTooltipModule, MatDialogModule, MatSelectModule, MatIconModule, MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter } from '@angular/material';
+import {
+  MatFormFieldModule,
+  MatAutocompleteModule,
+  MatSliderModule,
+  MatDatepickerModule,
+  MatButtonModule,
+  MatNativeDateModule,
+  MatInputModule,
+  MatTooltipModule,
+  MatDialogModule,
+  MatSelectModule,
+  MatIconModule,
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS,
+  DateAdapter
+} from '@angular/material';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmEmployeeDeleteDialogComponent } from './dialogs/confirm-employee-delete.component';
