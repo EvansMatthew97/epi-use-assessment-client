@@ -1,8 +1,12 @@
-# EPI-USE Technical Assessment Project Server
+# EPI-USE Technical Assessment Project Client
 
 [Live Application](https://epi-use-assessment.herokuapp.com)
 
 [Documentation](https://evansmatthew97.github.io/epi-use-assessment-client/)
+
+[User Manual](user-manual.pdf)
+
+[Server Repository](https://github.com/EvansMatthew97/epi-use-assessment-server)
 
 ## Description
 Client source for EPI-USE technical assessment project. The client-side code provides a user interface created in Angular which consumes the server API.
@@ -10,6 +14,8 @@ Client source for EPI-USE technical assessment project. The client-side code pro
 Useful information regarding the use of endpoints can be found in the documentation link provided above.
 
 This repository is configured to automatically deploy to Heroku, run unit tests and deploy documentation to Github pages.
+
+![System screenshot](https://imgur.com/xIPa902.jpg)
 
 ### Technology choices
 This project is coded using **Angular**. Angular provides a modular MVC framework for cross-platform web development. It has a rich ecosystem (npm) and large community support. Being web-based, it can be deployed to the web as well as desktop (using Electron.js) and mobile (using Cordova). This makes future deployment simpler using a single code base.
