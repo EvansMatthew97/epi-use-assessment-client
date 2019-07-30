@@ -163,6 +163,7 @@ export class EditorComponent implements OnInit {
     this.employeeDetailsFormGroup.get('employeeNumber').disable();
     this.employeeDetailsFormGroup.get('birthdate').setValue(new Date());
     this.creatingEmployee = true;
+    this.employeeCanReportTo = this.employees;
   }
 
   async saveEmployee() {
