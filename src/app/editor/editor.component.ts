@@ -57,6 +57,13 @@ export class EditorComponent {
    * editor in the sidebar.
    */
   selectEmployee(employeeId) {
+    if (typeof this.employeeMap[employeeId] === 'undefined') {
+      // employee id does not exist
+      this.selectedId = null;
+      this.selectedEmployee = null;
+      return;
+    }
+
     this.creatingEmployee = false;
     this.selectedId = employeeId;
     this.saveEmployeeError = null;
