@@ -1,8 +1,12 @@
-# EPI-USE Technical Assessment Project Server
+# EPI-USE Technical Assessment Project Client
 
 [Live Application](https://epi-use-assessment.herokuapp.com)
 
 [Documentation](https://evansmatthew97.github.io/epi-use-assessment-client/)
+
+[User Manual](user-manual.pdf)
+
+[Server Repository](https://github.com/EvansMatthew97/epi-use-assessment-server)
 
 ## Description
 Client source for EPI-USE technical assessment project. The client-side code provides a user interface created in Angular which consumes the server API.
