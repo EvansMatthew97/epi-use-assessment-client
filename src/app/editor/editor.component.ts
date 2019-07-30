@@ -196,37 +196,6 @@ export class EditorComponent implements OnInit {
     }
   }
 
-  searchEmployeeRoles(searchTerm) {
-    searchTerm = searchTerm.toLowerCase();
-
-    this.roleSearchResults = this.employeeRoles.filter(
-      role => role.name.toLowerCase().includes(searchTerm)
-    );
-  }
-
-  searchEmployeeReportsTo(searchTerm) {
-    searchTerm = searchTerm.toLowerCase();
-
-    // if the user searched for a number, they are searching by id
-    if (/\d+/.test(searchTerm)) {
-      const employee = this.employeeMap[searchTerm];
-      if (!employee) {
-        return [];
-      }
-      return [employee];
-    }
-
-    let employees = this.employees.filter(employee => (
-      `${employee.name} ${employee.surname}`.toLowerCase().includes(searchTerm)
-    ));
-
-    if (!this.creatingEmployee) {
-      employees = employees.filter(employee => employee.id !== this.selectedId);
-    }
-
-    this.reportsToSearchResults = employees;
-  }
-
   deleteEmployee() {
     const employeeNumber = this.employeeDetailsFormGroup.get('employeeNumber').value;
     const employee = this.employeeMap[employeeNumber];
