@@ -17,8 +17,8 @@
   <div class="error" *ngIf="error">{{ error }}</div>
 
   <div class="login-button-container">
-    <button type="submit" mat-flat-button color="accent" [disabled]="!formGroup.valid">
-      Log in
+    <button type="submit" mat-flat-button color="accent" [disabled]="!formGroup.valid || isCheckingCredentials">
+      {{ !isCheckingCredentials ? 'Log in' : 'Logging in...'}}
     </button>
   </div>
 </form>

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 import { ApiModule } from './api/api.module';
 import { EmployeeModule } from './employee/employee.module';
+import { MatProgressBarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,8 @@ import { EmployeeModule } from './employee/employee.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+
+    MatProgressBarModule,
 
     ApiModule.forRoot(),
     EmployeeModule.forRoot(),

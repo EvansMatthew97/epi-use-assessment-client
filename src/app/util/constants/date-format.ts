@@ -1,3 +1,6 @@
+/**
+ * Custom date format (DD-MM-YYYY) for Angular Material datepicker
+ */
 export const DDMMYYYFormat = {
   parse: {
     dateInput: 'DD-MM-YYYY',

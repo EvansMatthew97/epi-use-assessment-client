@@ -5,6 +5,10 @@ import { EmployeeService } from '../../../employee/employee.service';
 import { EmployeeRole } from 'src/app/employee/interfaces/employee-role.interface';
 import { Subscription } from 'rxjs';
 
+/**
+ * Form for editing employee details.
+ * Handles data validation
+ */
 @Component({
   selector: 'app-employee-editor',
   templateUrl: './employee-editor.component.html',
@@ -13,7 +17,8 @@ import { Subscription } from 'rxjs';
 export class EmployeeEditorComponent implements OnChanges, OnInit, OnDestroy {
   @Input() employee: Employee;
   @Input() saveEmployeeError: string = null;
-  @Input() creatingEmployee: boolean = false;
+  @Input() creatingEmployee: boolean = false; // whether creating or editing employee
+
   @Output() save = new EventEmitter<Employee>();
   @Output() delete = new EventEmitter<number>();
 

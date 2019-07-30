@@ -3,6 +3,9 @@ import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../api/api.service';
 
+/**
+ * Login screen. Presents a form for authorizing the user.
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +18,8 @@ export class LoginComponent {
   });
 
   @Input() error = null;
+
+  isCheckingCredentials = false;
 
   constructor(
     private readonly api: ApiService,
@@ -30,6 +35,9 @@ export class LoginComponent {
       return false; // prevent redirect
     }
 
+    this.isCheckingCredentials = true;
+    this.error = 'Checking credentials...';
+
     try {
       const result = await this.api.logIn(
         this.formGroup.get('username').value,
@@ -44,6 +52,7 @@ export class LoginComponent {
       this.error = 'An unknown error occurred';
     }
 
+    this.isCheckingCredentials = false;
     return false; // prevent redirect
   }
 }

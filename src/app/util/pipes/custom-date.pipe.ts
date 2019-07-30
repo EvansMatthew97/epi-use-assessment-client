@@ -1,6 +1,10 @@
 import { PipeTransform, Pipe } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
+/**
+ * Date pipe for universal use throughout the application.
+ * Helps ensure consistent date format (dd-MM-yyyy)
+ */
 @Pipe({
   name: 'customDate',
 })

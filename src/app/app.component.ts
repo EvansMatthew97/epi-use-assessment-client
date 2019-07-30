@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(
-    private readonly api: ApiService,
+    public readonly api: ApiService,
     private readonly router: Router,
   ) {
     this.api.$authStateChange.subscribe(isLoggedIn => {

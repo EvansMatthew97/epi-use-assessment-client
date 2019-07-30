@@ -3,6 +3,9 @@ import { EmployeeRole } from '../../employee/interfaces/employee-role.interface'
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { Employee } from 'src/app/employee/interfaces/employee.interface';
 
+/**
+ * Data passed to the employee role stats dialog
+ */
 export interface EmployeeRoleStatsDialogData {
   stats: Array<{
     role: EmployeeRole;
@@ -10,6 +13,10 @@ export interface EmployeeRoleStatsDialogData {
   }>;
 }
 
+/**
+ * Dialog component for displaying employee role stats.
+ * Specifically, shows the highest salaries per employee role.
+ */
 @Component({
   selector: 'app-dialog-employee-role-stats',
   template: `

@@ -19,6 +19,8 @@ export class ApiService {
   private readonly baseUrl = environment.apiUrl;
   public readonly $authStateChange = new BehaviorSubject(false);
 
+  public isLoading = false;
+
   constructor(
     private readonly httpClient: HttpClient,
   ) {
@@ -119,7 +121,13 @@ export class ApiService {
     return await this.request('GET', urlWithParams, {});
   }
 
+  /**
+   * Performs a GET or POST request and attaches bearer token
+   * @param method The HTTP method
+   */
   private async request(method: 'GET' | 'POST', url: string, params: { [s: string]: any }): Promise<any> {
+    this.isLoading = true;
+
     const headers = await this.createAuthHeaders();
 
     url = `${this.baseUrl}${url}`;
@@ -139,6 +147,8 @@ export class ApiService {
       }
       this.$authStateChange.next(false);
       throw new AuthException();
+    } finally {
+      this.isLoading = false;
     }
   }
 

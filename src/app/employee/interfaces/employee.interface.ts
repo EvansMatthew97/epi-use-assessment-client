@@ -1,3 +1,6 @@
+/**
+ * Represents a single employee.
+ */
 export interface Employee {
   id: number;
   name: string;

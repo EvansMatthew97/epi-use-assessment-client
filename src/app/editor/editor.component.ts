@@ -1,4 +1,4 @@
-import { Component, } from '@angular/core';
+import { Component, OnDestroy, } from '@angular/core';
 import { PanZoomConfig } from 'ng2-panzoom';
 import { Employee } from '../employee/interfaces/employee.interface';
 import { EmployeeRole } from '../employee/interfaces/employee-role.interface';
@@ -7,13 +7,14 @@ import { ConfirmEmployeeDeleteDialogComponent, ConfirmDeleteEmployeeData } from 
 import { EmployeeRolestatsDialogComponent } from './dialogs/employee-role-stats-dialog.component';
 import { ConfirmDeleteRoleDialogComponent } from './dialogs/confirm-delete-role-dialog.component';
 import { EmployeeService } from '../employee/employee.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss'],
 })
-export class EditorComponent {
+export class EditorComponent implements OnDestroy {
   // editor pan/zoom canvas configuration
   zoomConfig: PanZoomConfig = new PanZoomConfig({
     freeMouseWheelFactor: 0.01,
@@ -41,15 +42,24 @@ export class EditorComponent {
   employeeCanReportTo: Employee[] = [];
   saveEmployeeError = null;
 
+  private subscribers: Subscription[] = [];
+
   constructor(
     private readonly employeeService: EmployeeService,
     private readonly dialog: MatDialog,
   ) {
-    this.employeeService.employees$.subscribe(employees => this.employees = employees);
-    this.employeeService.employeeMap$.subscribe(employeeMap => this.employeeMap = employeeMap);
-    this.employeeService.employeeHierarchy$.subscribe(employeeHierarchy => this.hierarchy = employeeHierarchy);
-    this.employeeService.employeeRoles$.subscribe(roles => this.employeeRoles = roles);
-    this.employeeService.employeeRolesMap$.subscribe(rolesMap => this.employeeRoleMap = rolesMap);
+    this.subscribers = [
+      this.employeeService.employees$.subscribe(employees => this.employees = employees),
+      this.employeeService.employeeMap$.subscribe(employeeMap => this.employeeMap = employeeMap),
+      this.employeeService.employeeHierarchy$.subscribe(employeeHierarchy => this.hierarchy = employeeHierarchy),
+      this.employeeService.employeeRoles$.subscribe(roles => this.employeeRoles = roles),
+      this.employeeService.employeeRolesMap$.subscribe(rolesMap => this.employeeRoleMap = rolesMap),
+    ];
+  }
+
+  ngOnDestroy() {
+    // clear subscriptions
+    this.subscribers.forEach(sub => sub.unsubscribe());
   }
 
   /**

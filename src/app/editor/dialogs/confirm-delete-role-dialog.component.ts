@@ -2,10 +2,17 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { EmployeeRole } from '../../employee/interfaces/employee-role.interface';
 
+/**
+ * Format of data passed to confirm delete role dialog
+ */
 export interface ConfirmDeleteRoleDialogData {
   roles: EmployeeRole[];
 }
 
+/**
+ * Dialog for confirm deletion of employee role.
+ * Gives options for selecting the replacement role.
+ */
 @Component({
   selector: 'app-confirm-delete-role-dialog',
   template: `

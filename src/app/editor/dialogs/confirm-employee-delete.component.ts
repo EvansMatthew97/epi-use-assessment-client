@@ -2,10 +2,16 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Employee } from 'src/app/employee/interfaces/employee.interface';
 
+/**
+ * Format of data passed to the employee delete confirmation dialog
+ */
 export interface ConfirmDeleteEmployeeData {
   employee: Employee;
 }
 
+/**
+ * Dialog to confirm deletion of an employee
+ */
 @Component({
   selector: 'app-dialog-confirm-employee-delete',
   template: `
