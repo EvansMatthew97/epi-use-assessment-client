@@ -1,0 +1,1047 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>EmployeeEditorComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/editor/components/employee-editor/employee-editor.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Form for editing employee details.
+Handles data validation</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-employee-editor</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./employee-editor.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./employee-editor.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#employeeCanReportTo">employeeCanReportTo</a>
+                            </li>
+                            <li>
+                                <a href="#employeeDetailsFormGroup">employeeDetailsFormGroup</a>
+                            </li>
+                            <li>
+                                <a href="#employeeRoles">employeeRoles</a>
+                            </li>
+                            <li>
+                                <a href="#employeeRolesSubscription">employeeRolesSubscription</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteEmployee">deleteEmployee</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#saveEmployee">saveEmployee</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#creatingEmployee">creatingEmployee</a>
+                            </li>
+                            <li>
+                                <a href="#employee">employee</a>
+                            </li>
+                            <li>
+                                <a href="#saveEmployeeError">saveEmployeeError</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#delete">delete</a>
+                            </li>
+                            <li>
+                                <a href="#save">save</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(employeeService: <a href="../injectables/EmployeeService.html">EmployeeService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>employeeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/EmployeeService.html" target="_self" >EmployeeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="creatingEmployee"></a>
+                        <b>creatingEmployee</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:20</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="employee"></a>
+                        <b>employee</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Employee.html" target="_self" >Employee</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:18</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="saveEmployeeError"></a>
+                        <b>saveEmployeeError</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:19</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="delete"></a>
+                        <b>delete</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:23</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="save"></a>
+                        <b>save</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:22</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteEmployee"></a>
+                    <span class="name">
+                        <b>
+                            deleteEmployee
+                        </b>
+                        <a href="#deleteEmployee"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteEmployee()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:89</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <b>
+                            ngOnChanges
+                        </b>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:52</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveEmployee"></a>
+                    <span class="name">
+                        <b>
+                            saveEmployee
+                        </b>
+                        <a href="#saveEmployee"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveEmployee()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="employeeCanReportTo"></a>
+                        <span class="name">
+                            <b>
+                            employeeCanReportTo</b>
+                            <a href="#employeeCanReportTo"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Employee.html" target="_self" >Employee[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="employeeDetailsFormGroup"></a>
+                        <span class="name">
+                            <b>
+                            employeeDetailsFormGroup</b>
+                            <a href="#employeeDetailsFormGroup"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new FormGroup({
+    employeeNumber: new FormControl(),
+    name: new FormControl(&#x27;&#x27;, Validators.required),
+    surname: new FormControl(&#x27;&#x27;, Validators.required),
+    birthdate: new FormControl(new Date(), [Validators.required]),
+    salary: new FormControl(250000, [Validators.required, Validators.min(0)]),
+    reportsTo: new FormControl(),
+    role: new FormControl(&#x27;&#x27;, Validators.required),
+  })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="employeeRoles"></a>
+                        <span class="name">
+                            <b>
+                            employeeRoles</b>
+                            <a href="#employeeRoles"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>EmployeeRole[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="employeeRolesSubscription"></a>
+                        <span class="name">
+                            <b>
+                            employeeRolesSubscription</b>
+                            <a href="#employeeRolesSubscription"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Subscription</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>null</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/editor/components/employee-editor/employee-editor.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter, OnInit, OnDestroy } from &#x27;@angular/core&#x27;;
+import { Employee } from &#x27;src/app/employee/interfaces/employee.interface&#x27;;
+import { FormGroup, FormControl, Validators } from &#x27;@angular/forms&#x27;;
+import { EmployeeService } from &#x27;../../../employee/employee.service&#x27;;
+import { EmployeeRole } from &#x27;src/app/employee/interfaces/employee-role.interface&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+
+/**
+ * Form for editing employee details.
+ * Handles data validation
+ */
+@Component({
+  selector: &#x27;app-employee-editor&#x27;,
+  templateUrl: &#x27;./employee-editor.component.html&#x27;,
+  styleUrls: [&#x27;./employee-editor.component.scss&#x27;],
+})
+export class EmployeeEditorComponent implements OnChanges, OnInit, OnDestroy {
+  @Input() employee: Employee;
+  @Input() saveEmployeeError: string &#x3D; null;
+  @Input() creatingEmployee: boolean &#x3D; false; // whether creating or editing employee
+
+  @Output() save &#x3D; new EventEmitter&lt;Employee&gt;();
+  @Output() delete &#x3D; new EventEmitter&lt;number&gt;();
+
+  employeeDetailsFormGroup &#x3D; new FormGroup({
+    employeeNumber: new FormControl(),
+    name: new FormControl(&#x27;&#x27;, Validators.required),
+    surname: new FormControl(&#x27;&#x27;, Validators.required),
+    birthdate: new FormControl(new Date(), [Validators.required]),
+    salary: new FormControl(250000, [Validators.required, Validators.min(0)]),
+    reportsTo: new FormControl(),
+    role: new FormControl(&#x27;&#x27;, Validators.required),
+  });
+
+  employeeCanReportTo: Employee[] &#x3D; [];
+
+  employeeRoles: EmployeeRole[] &#x3D; [];
+  employeeRolesSubscription: Subscription &#x3D; null;
+
+  constructor(
+    private readonly employeeService: EmployeeService,
+  ) {
+    this.employeeRolesSubscription &#x3D; this.employeeService.employeeRoles$.subscribe(roles &#x3D;&gt; {
+      this.employeeRoles &#x3D; roles;
+    });
+  }
+
+  ngOnInit() {
+    this.employeeDetailsFormGroup.get(&#x27;employeeNumber&#x27;).disable();
+  }
+
+  ngOnDestroy() {
+    this.employeeRolesSubscription.unsubscribe();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.employee) {
+      // deep copy the employee so as to not overwrite (memento)
+      this.employee &#x3D; {...this.employee};
+      this.employeeCanReportTo &#x3D; this.employeeService.employeeCanReportTo(this.employee);
+
+      const group &#x3D; this.employeeDetailsFormGroup;
+      group.get(&#x27;employeeNumber&#x27;).disable();
+      group.get(&#x27;employeeNumber&#x27;).setValue(this.employee.id);
+      group.get(&#x27;name&#x27;).setValue(this.employee.name);
+      group.get(&#x27;surname&#x27;).setValue(this.employee.surname);
+      group.get(&#x27;birthdate&#x27;).setValue(this.employee.birthdate);
+      group.get(&#x27;salary&#x27;).setValue(this.employee.salary);
+      group.get(&#x27;reportsTo&#x27;).setValue(this.employee.reportsTo);
+      group.get(&#x27;role&#x27;).setValue(this.employee.role);
+    }
+  }
+
+  saveEmployee() {
+    const group &#x3D; this.employeeDetailsFormGroup;
+    const employee: Employee &#x3D; {
+      id: group.get(&#x27;employeeNumber&#x27;).value,
+      name: group.get(&#x27;name&#x27;).value,
+      surname: group.get(&#x27;surname&#x27;).value,
+      birthdate: group.get(&#x27;birthdate&#x27;).value,
+      salary: group.get(&#x27;salary&#x27;).value,
+      reportsTo: group.get(&#x27;reportsTo&#x27;).value,
+      role: group.get(&#x27;role&#x27;).value,
+      oversees: this.employee.oversees,
+    };
+    this.save.emit(employee);
+  }
+
+  deleteEmployee() {
+    const id &#x3D; this.employeeDetailsFormGroup.get(&#x27;employeeNumber&#x27;).value;
+    this.delete.emit(id);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;form [formGroup]&#x3D;&quot;employeeDetailsFormGroup&quot; (submit)&#x3D;&quot;saveEmployee()&quot;&gt;
+  &lt;div&gt;
+    &lt;mat-form-field&gt;
+      &lt;mat-label&gt;Employee number&lt;/mat-label&gt;
+      &lt;input matInput formControlName&#x3D;&quot;employeeNumber&quot; /&gt;
+    &lt;/mat-form-field&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;split-field&quot;&gt;
+    &lt;mat-form-field&gt;
+      &lt;mat-label&gt;Name&lt;/mat-label&gt;
+      &lt;input matInput formControlName&#x3D;&quot;name&quot; /&gt;
+    &lt;/mat-form-field&gt;
+    &lt;mat-form-field&gt;
+      &lt;mat-label&gt;Surname&lt;/mat-label&gt;
+      &lt;input matInput formControlName&#x3D;&quot;surname&quot; /&gt;
+    &lt;/mat-form-field&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;mat-form-field&gt;
+      &lt;mat-label&gt;Birthdate&lt;/mat-label&gt;
+      &lt;input matInput [matDatepicker]&#x3D;&quot;birthdatePicker&quot; formControlName&#x3D;&quot;birthdate&quot; /&gt;
+      &lt;mat-datepicker-toggle matSuffix [for]&#x3D;&quot;birthdatePicker&quot;&gt;&lt;/mat-datepicker-toggle&gt;
+      &lt;mat-datepicker #birthdatePicker&gt;&lt;/mat-datepicker&gt;
+    &lt;/mat-form-field&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;mat-form-field&gt;
+      &lt;mat-label&gt;Salary&lt;/mat-label&gt;
+      &lt;input matInput type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;salary&quot; /&gt;
+    &lt;/mat-form-field&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;split-field&quot;&gt;
+    &lt;mat-form-field&gt;
+      &lt;mat-label&gt;Role&lt;/mat-label&gt;
+      &lt;mat-select formControlName&#x3D;&quot;role&quot;&gt;
+        &lt;mat-option *ngFor&#x3D;&quot;let role of employeeRoles&quot; [value]&#x3D;&quot;role.id&quot;&gt;
+          {{ role.name }}
+        &lt;/mat-option&gt;
+      &lt;/mat-select&gt;
+    &lt;/mat-form-field&gt;
+    &lt;mat-form-field&gt;
+      &lt;mat-label&gt;Reports to&lt;/mat-label&gt;
+      &lt;mat-select formControlName&#x3D;&quot;reportsTo&quot;&gt;
+        &lt;mat-option [value]&#x3D;&quot;undefined&quot;&gt;Nobody&lt;/mat-option&gt;
+        &lt;mat-option *ngFor&#x3D;&quot;let employee of employeeCanReportTo&quot; [value]&#x3D;&quot;employee.id&quot;&gt;
+          {{ employee.name }} {{ employee.surname }}
+        &lt;/mat-option&gt;
+      &lt;/mat-select&gt;
+    &lt;/mat-form-field&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;error&quot; *ngIf&#x3D;&quot;saveEmployeeError&quot;&gt;
+    {{ saveEmployeeError }}
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;save-button-container&quot;&gt;
+    &lt;button *ngIf&#x3D;&quot;!creatingEmployee&quot; type&#x3D;&quot;button&quot; mat-stroked-button color&#x3D;&quot;warn&quot; (click)&#x3D;&quot;deleteEmployee()&quot; matTooltip&#x3D;&quot;Remove employee&quot;&gt;Delete&lt;/button&gt;
+    &lt;button type&#x3D;&quot;submit&quot; mat-flat-button color&#x3D;&quot;primary&quot; [disabled]&#x3D;&quot;!employeeDetailsFormGroup.valid&quot;&gt;Save&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./employee-editor.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">mat-form-field {
+  display: block;
+  width: auto;
+}
+.split-field {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  mat-form-field {
+    width: 50%;
+  }
+}
+.save-button-container {
+  text-align: right;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="employeeDetailsFormGroup" (submit)="saveEmployee()">  <div>    <mat-form-field>      <mat-label>Employee number</mat-label>      <input matInput formControlName="employeeNumber" />    </mat-form-field>  </div>  <div class="split-field">    <mat-form-field>      <mat-label>Name</mat-label>      <input matInput formControlName="name" />    </mat-form-field>    <mat-form-field>      <mat-label>Surname</mat-label>      <input matInput formControlName="surname" />    </mat-form-field>  </div>  <div>    <mat-form-field>      <mat-label>Birthdate</mat-label>      <input matInput [matDatepicker]="birthdatePicker" formControlName="birthdate" />      <mat-datepicker-toggle matSuffix [for]="birthdatePicker"></mat-datepicker-toggle>      <mat-datepicker #birthdatePicker></mat-datepicker>    </mat-form-field>  </div>  <div>    <mat-form-field>      <mat-label>Salary</mat-label>      <input matInput type="number" formControlName="salary" />    </mat-form-field>  </div>  <div class="split-field">    <mat-form-field>      <mat-label>Role</mat-label>      <mat-select formControlName="role">        <mat-option *ngFor="let role of employeeRoles" [value]="role.id">          {{ role.name }}        </mat-option>      </mat-select>    </mat-form-field>    <mat-form-field>      <mat-label>Reports to</mat-label>      <mat-select formControlName="reportsTo">        <mat-option [value]="undefined">Nobody</mat-option>        <mat-option *ngFor="let employee of employeeCanReportTo" [value]="employee.id">          {{ employee.name }} {{ employee.surname }}        </mat-option>      </mat-select>    </mat-form-field>  </div>  <div class="error" *ngIf="saveEmployeeError">    {{ saveEmployeeError }}  </div>  <div class="save-button-container">    <button *ngIf="!creatingEmployee" type="button" mat-stroked-button color="warn" (click)="deleteEmployee()" matTooltip="Remove employee">Delete</button>    <button type="submit" mat-flat-button color="primary" [disabled]="!employeeDetailsFormGroup.valid">Save</button>  </div></form></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmDeleteRoleDialogComponent', 'selector': 'app-confirm-delete-role-dialog'},{'name': 'ConfirmEmployeeDeleteDialogComponent', 'selector': 'app-dialog-confirm-employee-delete'},{'name': 'EditorComponent', 'selector': 'app-editor'},{'name': 'EmployeeComponent', 'selector': 'app-employee'},{'name': 'EmployeeEditorComponent', 'selector': 'app-employee-editor'},{'name': 'EmployeeRolestatsDialogComponent', 'selector': 'app-dialog-employee-role-stats'},{'name': 'LoginComponent', 'selector': 'app-login'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EmployeeEditorComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EmployeeEditorComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

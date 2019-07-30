@@ -1,0 +1,872 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>EmployeeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/editor/components/employee/employee.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component for representing employee hierarchies.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-employee</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./employee.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./employee.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clickEmployee">clickEmployee</a>
+                            </li>
+                            <li>
+                                <a href="#isOlderThanDate">isOlderThanDate</a>
+                            </li>
+                            <li>
+                                <a href="#isSearchedFor">isSearchedFor</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#employee">employee</a>
+                            </li>
+                            <li>
+                                <a href="#employeeRolesMap">employeeRolesMap</a>
+                            </li>
+                            <li>
+                                <a href="#olderThan">olderThan</a>
+                            </li>
+                            <li>
+                                <a href="#searchedEmployees">searchedEmployees</a>
+                            </li>
+                            <li>
+                                <a href="#searchedId">searchedId</a>
+                            </li>
+                            <li>
+                                <a href="#selectedId">selectedId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectEmployee">selectEmployee</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/editor/components/employee/employee.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="employee"></a>
+                        <b>employee</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Employee.html" target="_self" >Employee</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/editor/components/employee/employee.component.ts:14</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="employeeRolesMap"></a>
+                        <b>employeeRolesMap</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/editor/components/employee/employee.component.ts:20</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="olderThan"></a>
+                        <b>olderThan</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/editor/components/employee/employee.component.ts:16</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchedEmployees"></a>
+                        <b>searchedEmployees</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Employee.html" target="_self" >Employee[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/editor/components/employee/employee.component.ts:18</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchedId"></a>
+                        <b>searchedId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/editor/components/employee/employee.component.ts:19</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedId"></a>
+                        <b>selectedId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/editor/components/employee/employee.component.ts:15</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectEmployee"></a>
+                        <b>selectEmployee</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/editor/components/employee/employee.component.ts:22</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clickEmployee"></a>
+                    <span class="name">
+                        <b>
+                            clickEmployee
+                        </b>
+                        <a href="#clickEmployee"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clickEmployee(employee)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/editor/components/employee/employee.component.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Select employee</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>employee</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isOlderThanDate"></a>
+                    <span class="name">
+                        <b>
+                            isOlderThanDate
+                        </b>
+                        <a href="#isOlderThanDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isOlderThanDate()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">src/app/editor/components/employee/employee.component.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines whether the user is older than the date given</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSearchedFor"></a>
+                    <span class="name">
+                        <b>
+                            isSearchedFor
+                        </b>
+                        <a href="#isSearchedFor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isSearchedFor()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/editor/components/employee/employee.component.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determine whether the user meets search criteria</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/editor/components/employee/employee.component.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+import { Employee } from &#x27;src/app/employee/interfaces/employee.interface&#x27;;
+import { EmployeeRole } from &#x27;../../../employee/interfaces/employee-role.interface&#x27;;
+
+/**
+ * Component for representing employee hierarchies.
+ */
+@Component({
+  selector: &#x27;app-employee&#x27;,
+  templateUrl: &#x27;./employee.component.html&#x27;,
+  styleUrls: [&#x27;./employee.component.scss&#x27;]
+})
+export class EmployeeComponent implements OnInit {
+  @Input() employee: Employee;
+  @Input() selectedId: number; // employee should be highlighted
+  @Input() olderThan: Date; // for filtering by age
+
+  @Input() searchedEmployees: Employee[] &#x3D; []; // for filtering by search
+  @Input() searchedId: number &#x3D; null;
+  @Input() employeeRolesMap: {[id: number]: EmployeeRole};
+
+  @Output() selectEmployee &#x3D; new EventEmitter(); // emitted on selecting employee
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  /**
+   * Determines whether the user is older than the date given
+   */
+  isOlderThanDate(): boolean {
+    if (!this.olderThan) {
+      return true;
+    }
+    return new Date(this.employee.birthdate) &lt; this.olderThan;
+  }
+
+  /**
+   * Determine whether the user meets search criteria
+   */
+  isSearchedFor(): boolean {
+    return this.searchedEmployees
+      .some(employee &#x3D;&gt; employee.id &#x3D;&#x3D;&#x3D; this.employee.id);
+  }
+
+  /**
+   * Select employee
+   */
+  clickEmployee(employee) {
+    this.selectEmployee.emit(employee);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;employee-container&quot; [class.leaf]&#x3D;&quot;!employee.oversees.length&quot;&gt;
+  &lt;div *ngIf&#x3D;&quot;employee&quot; class&#x3D;&quot;employee&quot;
+    [class.selected]&#x3D;&quot;employee.id &#x3D;&#x3D;&#x3D; selectedId&quot;
+    [class.not-old-enough]&#x3D;&quot;!isOlderThanDate()&quot;
+    [class.searched-for]&#x3D;&quot;isSearchedFor()&quot;
+    [class.is-root]&#x3D;&quot;!employee.reportsTo&quot;
+    (click)&#x3D;&quot;clickEmployee(employee)&quot;
+  &gt;
+    &lt;div class&#x3D;&quot;title&quot;&gt;&lt;b&gt;{{ employee.name }} {{ employee.surname }}&lt;/b&gt; ({{ employee.id }})&lt;/div&gt;
+    &lt;div&gt;{{ employee.birthdate | customDate }}&lt;/div&gt;
+    &lt;div&gt;{{ employeeRolesMap[employee.role].name }} - {{ employee.salary | currency:&#x27;R&#x27; }}&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;sub-employees&quot; *ngIf&#x3D;&quot;employee.oversees.length&quot;&gt;
+  &lt;app-employee class&#x3D;&quot;sub-employee&quot; *ngFor&#x3D;&quot;let emp of employee.oversees&quot;
+    [employee]&#x3D;&quot;emp&quot;
+    [selectedId]&#x3D;&quot;selectedId&quot;
+    [olderThan]&#x3D;&quot;olderThan&quot;
+    [searchedEmployees]&#x3D;&quot;searchedEmployees&quot;
+    [employeeRolesMap]&#x3D;&quot;employeeRolesMap&quot;
+    (selectEmployee)&#x3D;&quot;clickEmployee($event)&quot;
+  &gt;&lt;/app-employee&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./employee.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">$connector-width: 4px;
+$connector-color: #aaa;
+
+:host {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.employee-container {
+  display: flex;
+  position: relative;
+  align-content: center;
+  margin-bottom: 50px;
+  justify-content: center;
+
+  // connector from employee down to horizontal line
+  &amp;::after {
+    position: absolute;
+    content: &#x27;&#x27;;
+    width: $connector-width;
+    height: 25px;
+    bottom: 0;
+    left: 50%;
+    background-color: $connector-color;
+    transform: translateY(100%) translateX(-50%);
+  }
+  &amp;.leaf::after {
+    display: none;
+  }
+
+  .employee {
+    box-sizing: border-box;
+    position: relative;
+    padding: 10px 15px;
+    background: #fff;
+    border: $connector-width solid #000;
+    font-size: 14px;
+    min-width: 160px;
+
+    &amp;.searched-for {
+      border: $connector-width dotted #f3b;
+    }
+    &amp;.not-old-enough {
+      opacity: 0.6;
+    }
+    &amp;.selected {
+      border: $connector-width solid #f3b;
+    }
+  }
+}
+
+.sub-employees {
+  display: flex;
+  justify-content: center;
+
+  .sub-employee {
+    padding: 0 15px;
+
+    // connector up to horizontal line
+    &amp;::before {
+      content: &#x27;&#x27;;
+      position: absolute;
+      background-color: $connector-color;
+      left: 0;
+      left: 50%;
+      top: 0;
+      transform: translateY(-100%) translateX(-50%);
+      width: $connector-width;
+      height: 25px;
+    }
+
+    // horizontal connector
+    &amp;::after {
+      content: &#x27;&#x27;;
+      position: absolute;
+      background-color: $connector-color;
+      left: 0;
+      top: -25px;
+      transform: translateY(-100%);
+      height: $connector-width;
+      width: 100%;
+    }
+    &amp;:first-child::after {
+      left: 50%;
+      width: 50%;
+    }
+    &amp;:last-child::after {
+      width: 50%;
+    }
+    &amp;:only-child::after {
+      display: none;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="employee-container" [class.leaf]="!employee.oversees.length">  <div *ngIf="employee" class="employee"    [class.selected]="employee.id === selectedId"    [class.not-old-enough]="!isOlderThanDate()"    [class.searched-for]="isSearchedFor()"    [class.is-root]="!employee.reportsTo"    (click)="clickEmployee(employee)"  >    <div class="title"><b>{{ employee.name }} {{ employee.surname }}</b> ({{ employee.id }})</div>    <div>{{ employee.birthdate | customDate }}</div>    <div>{{ employeeRolesMap[employee.role].name }} - {{ employee.salary | currency:\'R\' }}</div>  </div></div><div class="sub-employees" *ngIf="employee.oversees.length">  <app-employee class="sub-employee" *ngFor="let emp of employee.oversees"    [employee]="emp"    [selectedId]="selectedId"    [olderThan]="olderThan"    [searchedEmployees]="searchedEmployees"    [employeeRolesMap]="employeeRolesMap"    (selectEmployee)="clickEmployee($event)"  ></app-employee></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ConfirmDeleteRoleDialogComponent', 'selector': 'app-confirm-delete-role-dialog'},{'name': 'ConfirmEmployeeDeleteDialogComponent', 'selector': 'app-dialog-confirm-employee-delete'},{'name': 'EditorComponent', 'selector': 'app-editor'},{'name': 'EmployeeComponent', 'selector': 'app-employee'},{'name': 'EmployeeEditorComponent', 'selector': 'app-employee-editor'},{'name': 'EmployeeRolestatsDialogComponent', 'selector': 'app-dialog-employee-role-stats'},{'name': 'LoginComponent', 'selector': 'app-login'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EmployeeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EmployeeComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

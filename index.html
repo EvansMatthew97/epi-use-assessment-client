@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>client documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">client documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="epi-use-technical-assessment-project-client">EPI-USE Technical Assessment Project Client</h1>
+<p><a href="https://epi-use-assessment.herokuapp.com">Live Application</a></p>
+<p><a href="https://evansmatthew97.github.io/epi-use-assessment-client/">Documentation</a></p>
+<p><a href="user-manual.pdf">User Manual</a></p>
+<p><a href="https://github.com/EvansMatthew97/epi-use-assessment-server">Server Repository</a></p>
+<h2 id="description">Description</h2>
+<p>Client source for EPI-USE technical assessment project. The client-side code provides a user interface created in Angular which consumes the server API.</p>
+<p>Useful information regarding the use of endpoints can be found in the documentation link provided above.</p>
+<p>This repository is configured to automatically deploy to Heroku, run unit tests and deploy documentation to Github pages.</p>
+<p><img src="https://i.imgur.com/U3Eq3zu.png" alt="System screenshot" class="img-responsive"></p>
+<h3 id="technology-choices">Technology choices</h3>
+<p>This project is coded using <strong>Angular</strong>. Angular provides a modular MVC framework for cross-platform web development. It has a rich ecosystem (npm) and large community support. Being web-based, it can be deployed to the web as well as desktop (using Electron.js) and mobile (using Cordova). This makes future deployment simpler using a single code base.</p>
+<p><strong>Express.js</strong> is used to host the application on <strong>Heroku</strong>. Express is simple and fast to set up, but also reasonably secure with a large community backing it. Heroku is free and provides continuous deployment for this project.</p>
+<h2 id="development">Development</h2>
+<h3 id="development-server">Development server</h3>
+<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
+<h3 id="code-scaffolding">Code scaffolding</h3>
+<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
+<h3 id="build">Build</h3>
+<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory. Use the <code>--prod</code> flag for a production build.</p>
+<h3 id="tests">Tests</h3>
+<p><strong>Note no tests have been implemented yet</strong></p>
+<h3 id="running-unit-tests">Running unit tests</h3>
+<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
+<h4 id="running-end-to-end-tests">Running end-to-end tests</h4>
+<p>Run <code>ng e2e</code> to execute the end-to-end tests via <a href="http://www.protractortest.org/">Protractor</a>.</p>
+<h3 id="further-help">Further help</h3>
+<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://github.com/angular/angular-cli/blob/master/README.md">Angular CLI README</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
