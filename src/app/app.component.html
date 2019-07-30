@@ -1,2 +1,5 @@
 <router-outlet class="router"></router-outlet>
 <mat-progress-bar class="loading-bar" mode="query" color="accent" *ngIf="api.isLoading"></mat-progress-bar>
+<div class="offline-indicator" [class.showing]="!isOnline">
+  You are offline
+</div>

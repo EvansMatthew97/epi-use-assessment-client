@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from './api/api.service';
 import { Router } from '@angular/router';
+import { NetworkStatusService } from './util/services/network-status.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  isOnline = true;
+
   constructor(
     public readonly api: ApiService,
     private readonly router: Router,
+    private readonly networkStatus: NetworkStatusService,
   ) {
-    this.api.$authStateChange.subscribe(isLoggedIn => {
+    this.api.authStateChange$.subscribe(isLoggedIn => {
       console.log('is logged in', isLoggedIn);
       if (!isLoggedIn) {
         console.log('navigating to login');
@@ -21,6 +25,10 @@ export class AppComponent {
         console.log('navigating to editor');
         this.router.navigate(['editor']);
       }
+    });
+
+    this.networkStatus.onlineStatus$.subscribe(isOnline => {
+      this.isOnline = isOnline;
     });
   }
 

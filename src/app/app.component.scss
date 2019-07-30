@@ -7,3 +7,24 @@ $loading-bar-height: 4px;
   right: 0;
   height: $loading-bar-height;
 }
+
+.offline-indicator {
+  pointer-events: none;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  text-align: center;
+  padding: 16px 25px;
+  border-radius: 10px;
+  opacity: 0;
+  font-weight: bold;
+  transform: translateX(-50%) translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.showing {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

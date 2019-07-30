@@ -17,7 +17,7 @@ export class AuthException {
 })
 export class ApiService {
   private readonly baseUrl = environment.apiUrl;
-  public readonly $authStateChange = new BehaviorSubject(false);
+  public readonly authStateChange$ = new BehaviorSubject(false);
 
   public isLoading = false;
 
@@ -39,7 +39,7 @@ export class ApiService {
 
 
       await this.setToken(token);
-      this.$authStateChange.next(true);
+      this.authStateChange$.next(true);
       return true;
     } catch (error) {
       if (error instanceof AuthException) {
@@ -53,7 +53,7 @@ export class ApiService {
    * Check whether the app state is authenticated
    */
   public isAuthenticated(): boolean {
-    return this.$authStateChange.value;
+    return this.authStateChange$.value;
   }
 
   /**
@@ -66,13 +66,13 @@ export class ApiService {
     try {
       const res = await this.get('/verify-token', {});
       if (res === true) {
-        this.$authStateChange.next(true);
+        this.authStateChange$.next(true);
         return true;
       }
       return false;
     } catch (error) {
       if (error instanceof AuthException) {
-        this.$authStateChange.next(false);
+        this.authStateChange$.next(false);
         return false;
       }
       throw error;
@@ -145,7 +145,7 @@ export class ApiService {
       if (error.status !== 401) {
         throw error;
       }
-      this.$authStateChange.next(false);
+      this.authStateChange$.next(false);
       throw new AuthException();
     } finally {
       this.isLoading = false;

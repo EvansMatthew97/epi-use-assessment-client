@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ApiModule } from './api/api.module';
 import { EmployeeModule } from './employee/employee.module';
 import { MatProgressBarModule } from '@angular/material';
+import { UtilModule } from './util/util.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatProgressBarModule } from '@angular/material';
 
     ApiModule.forRoot(),
     EmployeeModule.forRoot(),
+    UtilModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'en-ZA' },

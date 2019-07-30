@@ -28,7 +28,7 @@ export class EmployeeService {
     private api: ApiService,
   ) {
     // fetch data as soon as authenticated
-    this.api.$authStateChange.subscribe(isLoggedIn => {
+    this.api.authStateChange$.subscribe(isLoggedIn => {
       this.fetchData();
     });
   }
