@@ -174,6 +174,10 @@ export class EmployeeService {
    * (no child tree nodes or themself)
    */
   employeeCanReportTo(employee: Employee): Employee[] {
+    if (!employee.id) {
+      return this.employees;
+    }
+
     const recursiveDescendantSearch = (emp: Employee, descendants = []) => {
       descendants.push(emp);
 

@@ -57,18 +57,6 @@ $sidebar-width: 300px;
     }
     .sidebar-section-body {
       padding: 10px;
-      mat-form-field {
-        display: block;
-        width: auto;
-      }
-      .split-field {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        mat-form-field {
-          width: 50%;
-        }
-      }
       .sidebar-item {
         display: flex;
         justify-content: space-between;

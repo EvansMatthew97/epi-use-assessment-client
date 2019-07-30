@@ -14,6 +14,7 @@ import { ConfirmDeleteRoleDialogComponent } from './dialogs/confirm-delete-role-
 import { DDMMYYYFormat } from '../util/constants/date-format';
 import { UtilModule } from '../util/util.module';
 import { EmployeeModule } from '../employee/employee.module';
+import { EmployeeEditorComponent } from './components/employee-editor/employee-editor.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { EmployeeModule } from '../employee/employee.module';
     { provide: MAT_DATE_FORMATS, useValue: DDMMYYYFormat },
   ],
   entryComponents: [
+    EmployeeEditorComponent,
     ConfirmEmployeeDeleteDialogComponent,
     EmployeeRolestatsDialogComponent,
     ConfirmDeleteRoleDialogComponent,
@@ -55,6 +57,7 @@ import { EmployeeModule } from '../employee/employee.module';
   declarations: [
     EmployeeComponent,
     EditorComponent,
+    EmployeeEditorComponent,
     ConfirmEmployeeDeleteDialogComponent,
     EmployeeRolestatsDialogComponent,
     ConfirmDeleteRoleDialogComponent,

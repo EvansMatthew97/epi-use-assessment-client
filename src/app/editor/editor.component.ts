@@ -1,7 +1,6 @@
 import { Component, } from '@angular/core';
 import { PanZoomConfig } from 'ng2-panzoom';
 import { Employee } from '../employee/interfaces/employee.interface';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmployeeRole } from '../employee/interfaces/employee-role.interface';
 import { MatDialog } from '@angular/material';
 import { ConfirmEmployeeDeleteDialogComponent, ConfirmDeleteEmployeeData } from './dialogs/confirm-employee-delete.component';
@@ -24,6 +23,7 @@ export class EditorComponent {
   hierarchy: Employee[] = [];
   // the currently-selected employee
   selectedId = null;
+  selectedEmployee: Employee = null;
 
   employeeRoles: EmployeeRole[] = [];
   employeeRoleMap: {[id: number]: EmployeeRole} = {};
@@ -37,15 +37,6 @@ export class EditorComponent {
   searchedEmployees = [];
 
   creatingEmployee = false;
-  employeeDetailsFormGroup = new FormGroup({
-    employeeNumber: new FormControl(),
-    name: new FormControl('', Validators.required),
-    surname: new FormControl('', Validators.required),
-    birthdate: new FormControl(new Date(), [Validators.required]),
-    salary: new FormControl(250000, [Validators.required, Validators.min(0)]),
-    reportsTo: new FormControl(),
-    role: new FormControl('', Validators.required),
-  });
 
   employeeCanReportTo: Employee[] = [];
   saveEmployeeError = null;
@@ -70,20 +61,7 @@ export class EditorComponent {
     this.selectedId = employeeId;
     this.saveEmployeeError = null;
 
-    const employee = this.employees.find(emp => emp.id === employeeId);
-
-    const group = this.employeeDetailsFormGroup;
-    group.get('employeeNumber').setValue(employee.id);
-    group.get('employeeNumber').disable();
-
-    group.get('name').setValue(employee.name);
-    group.get('surname').setValue(employee.surname);
-    group.get('birthdate').setValue(new Date(employee.birthdate));
-    group.get('salary').setValue(employee.salary);
-    group.get('reportsTo').setValue(employee.reportsTo);
-    group.get('role').setValue(employee.role);
-
-    this.employeeCanReportTo = this.employeeService.employeeCanReportTo(employee);
+    this.selectedEmployee = this.employees.find(emp => emp.id === employeeId);
   }
 
   /**
@@ -127,34 +105,26 @@ export class EditorComponent {
    * Resets the form details.
    */
   addEmployee() {
-    this.employeeDetailsFormGroup.reset();
-    this.employeeDetailsFormGroup.get('employeeNumber').disable();
-    this.employeeDetailsFormGroup.get('birthdate').setValue(new Date());
+    this.selectedEmployee = {
+      id: undefined,
+      name: '',
+      surname: '',
+      birthdate: new Date(),
+      oversees: [],
+      salary: 100000,
+      role: this.employeeRoles[0].id,
+    };
     this.creatingEmployee = true; // set the state
-    this.employeeCanReportTo = this.employees; // a new employee can report to anyone
   }
 
   /**
    * Save an employee's details
    */
-  async saveEmployee() {
-    const group = this.employeeDetailsFormGroup;
-    if (!group.valid) {
-      return;
-    }
-
+  async saveEmployee(employeeDetails) {
+    console.log('save employee', employeeDetails);
     try {
       // save the employee
-      const employee = await this.employeeService.saveEmployee({
-        id: group.get('employeeNumber').value,
-        name: group.get('name').value,
-        surname: group.get('surname').value,
-        birthdate: new Date(group.get('birthdate').value),
-        salary: group.get('salary').value,
-        reportsTo: group.get('reportsTo').value,
-        role: group.get('role').value,
-        oversees: [],
-      });
+      const employee = await this.employeeService.saveEmployee(employeeDetails);
 
       // the employee id is now the id that the server generated for the employee
       this.selectEmployee(employee.id);
@@ -174,9 +144,8 @@ export class EditorComponent {
   /**
    * Remove an employee. Displays a dialog to confirm deletion.
    */
-  deleteEmployee() {
+  deleteEmployee(employeeNumber) {
     // get the id of the dialog from the employee details editor
-    const employeeNumber = this.employeeDetailsFormGroup.get('employeeNumber').value;
     const employee = this.employeeMap[employeeNumber];
 
     // create the dialog box

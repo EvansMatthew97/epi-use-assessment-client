@@ -58,64 +58,13 @@
       <p *ngIf="!employeeRoles.length">
         Please add an employee role before adding an employee.
       </p>
-      <form *ngIf="selectedId != null || creatingEmployee" [formGroup]="employeeDetailsFormGroup" (submit)="saveEmployee()">
-        <div>
-          <mat-form-field>
-            <mat-label>Employee number</mat-label>
-            <input matInput formControlName="employeeNumber" />
-          </mat-form-field>
-        </div>
-        <div class="split-field">
-          <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" />
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Surname</mat-label>
-            <input matInput formControlName="surname" />
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>Birthdate</mat-label>
-            <input matInput [matDatepicker]="birthdatePicker" formControlName="birthdate" />
-            <mat-datepicker-toggle matSuffix [for]="birthdatePicker"></mat-datepicker-toggle>
-            <mat-datepicker #birthdatePicker></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <mat-label>Salary</mat-label>
-            <input matInput type="number" formControlName="salary" />
-          </mat-form-field>
-        </div>
-        <div class="split-field">
-          <mat-form-field>
-            <mat-label>Role</mat-label>
-            <mat-select formControlName="role">
-              <mat-option *ngFor="let role of employeeRoles" [value]="role.id">
-                {{ role.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Reports to</mat-label>
-            <mat-select formControlName="reportsTo">
-              <mat-option [value]="undefined">Nobody</mat-option>
-              <mat-option *ngFor="let employee of employeeCanReportTo" [value]="employee.id">
-                {{ employee.name }} {{ employee.surname }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="error" *ngIf="saveEmployeeError">
-          {{ saveEmployeeError }}
-        </div>
-        <div class="save-button-container">
-          <button *ngIf="!creatingEmployee" type="button" mat-stroked-button color="warn" (click)="deleteEmployee()" matTooltip="Remove employee">Delete</button>
-          <button type="submit" mat-flat-button color="primary" [disabled]="!employeeDetailsFormGroup.valid">Save</button>
-        </div>
-      </form>
+      <app-employee-editor *ngIf="selectedId != null || creatingEmployee"
+        [employee]="selectedEmployee"
+        [creatingEmployee]="creatingEmployee"
+        [saveEmployeeError]="saveEmployeeError"
+        (save)="saveEmployee($event)"
+        (delete)="deleteEmployee($event)"
+      ></app-employee-editor>
     </div>
 
     <div class="sidebar-section roles">

@@ -1,0 +1,15 @@
+mat-form-field {
+  display: block;
+  width: auto;
+}
+.split-field {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  mat-form-field {
+    width: 50%;
+  }
+}
+.save-button-container {
+  text-align: right;
+}
