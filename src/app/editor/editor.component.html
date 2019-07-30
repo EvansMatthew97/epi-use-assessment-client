@@ -49,11 +49,14 @@
   <div class="sidebar-section employee-properties">
     <div class="sidebar-section-header">
       <div class="sidebar-section-title">Employee Details</div>
-      <button mat-button (click)="addEmployee()" matTooltip="Add employee">Add</button>
+      <button mat-button (click)="addEmployee()" matTooltip="Add employee" [disabled]="!employeeRoles.length">Add</button>
     </div>
     <div class="sidebar-section-body">
       <p *ngIf="selectedId == null">
         Select an employee to edit their details
+      </p>
+      <p *ngIf="!employeeRoles.length">
+        Please add an employee role before adding an employee.
       </p>
       <form *ngIf="selectedId != null || creatingEmployee" [formGroup]="employeeDetailsFormGroup" (submit)="saveEmployee()">
         <div>
@@ -89,11 +92,20 @@
         <div class="split-field">
           <mat-form-field>
             <mat-label>Role</mat-label>
-            <input matInput type="number" formControlName="role" />
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let role of employeeRoles" [value]="role.id">
+                {{ role.name }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Reports to</mat-label>
-            <input matInput type="number" formControlName="reportsTo" />
+            <mat-select formControlName="reportsTo">
+              <mat-option [value]="undefined">Nobody</mat-option>
+              <mat-option *ngFor="let employee of employeeCanReportTo" [value]="employee.id">
+                {{ employee.name }} {{ employee.surname }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div class="error" *ngIf="saveEmployeeError">

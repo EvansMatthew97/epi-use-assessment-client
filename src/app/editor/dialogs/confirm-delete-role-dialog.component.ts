@@ -11,7 +11,8 @@ export interface ConfirmDeleteRoleDialogData {
   template: `
   <h1 mat-dialog-title>Delete role</h1>
   <div mat-dialog-control>
-    <p>Deleting a role requires it be replaced by another role</p>
+    <p>This operation cannot be undone</p>
+    <p>Deleting a role requires it be replaced by another role.</p>
     <mat-form-field>
       <mat-label>Replace role with</mat-label>
       <mat-select [(ngModel)]="selectedRole">

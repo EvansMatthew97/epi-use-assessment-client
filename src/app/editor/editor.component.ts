@@ -44,8 +44,7 @@ export class EditorComponent implements OnInit {
     role: new FormControl('', Validators.required),
   });
 
-  roleSearchResults = [];
-  reportsToSearchResults = [];
+  employeeCanReportTo: Employee[] = [];
   saveEmployeeError = null;
 
   constructor(
@@ -106,6 +105,28 @@ export class EditorComponent implements OnInit {
     group.get('salary').setValue(employee.salary);
     group.get('reportsTo').setValue(employee.reportsTo);
     group.get('role').setValue(employee.role);
+
+    // find all employees who the selected emplyoee can report to
+    // (no child tree nodes or themself)
+    const recursiveDescendantSearch = (emp: Employee, descendantIds = []) => {
+      descendantIds.push(emp.id);
+
+      (emp.oversees || []).forEach(childId => {
+        const child = this.employeeMap[childId];
+        descendantIds.push(...recursiveDescendantSearch(child));
+      });
+
+      return descendantIds;
+    };
+
+    const descendantIds: {[id: number]: boolean} = recursiveDescendantSearch(employee).reduce((ob, empId) => {
+      ob[empId] = true;
+      return ob;
+    }, {});
+
+    console.log(descendantIds);
+
+    this.employeeCanReportTo = this.employees.filter(emp => !descendantIds[emp.id]);
   }
 
   searchEmployees() {

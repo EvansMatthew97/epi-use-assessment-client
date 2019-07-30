@@ -4,8 +4,7 @@ export interface Employee {
   surname: string;
   birthdate: Date;
   salary: number;
-  oversees: Employee[];
+  oversees: number[];
   reportsTo?: number;
   role: number;
-  roleName: string;
 }
