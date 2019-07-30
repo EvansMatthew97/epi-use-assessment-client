@@ -1,86 +1,96 @@
-$employee-width: 160px;
-$employee-height: 70px;
-$border-radius: 5px;
-$employee-border-width: 4px;
 $connector-width: 4px;
-$connector-color: #999;
-$employee-margin-top: 15px;
+$connector-color: #aaa;
 
 :host {
-  display: block;
+  display: flex;
   position: relative;
-  margin-top: $employee-margin-top;
+  flex-direction: column;
+  align-content: flex-start;
 }
 
-.employee {
+.employee-container {
+  display: flex;
   position: relative;
-  width: $employee-width;
-  height: $employee-height;
-  background: #eee;
-  border-radius: $border-radius;
-  padding: 10px 12px;
-  font-size: 14px;
-  border: $employee-border-width solid #bbb;
+  align-content: center;
+  margin-bottom: 50px;
+  justify-content: center;
 
-  &::before {
-    display: block;
+  // connector from employee down to horizontal line
+  &::after {
     position: absolute;
     content: '';
-    height: $connector-width;
-    width: 50%;
-    background: $connector-color;
-    left: -50%;
-    top: calc(50% - #{$connector-width});
+    width: $connector-width;
+    height: 25px;
+    bottom: 0;
+    left: 50%;
+    background-color: $connector-color;
+    transform: translateY(100%) translateX(-50%);
+  }
+  &.leaf::after {
+    display: none;
   }
 
-  &.is-root {
-    &::before {
-      display: none;
+  .employee {
+    box-sizing: border-box;
+    position: relative;
+    padding: 10px 15px;
+    background: #fff;
+    border: $connector-width solid #000;
+    font-size: 14px;
+    min-width: 160px;
+
+    &.searched-for {
+      border: $connector-width dotted #f3b;
     }
-  }
-
-  &.selected {
-    border: $employee-border-width solid var(--primary-color) !important;
-    background: var(--primary-color);
-    color: #fff;
-  }
-
-  &.not-old-enough {
-    opacity: 0.4;
-  }
-
-  &.searched-for {
-    border: $employee-border-width dashed var(--primary-color);
-  }
-
-  .title {
-    text-overflow: clip;
-    white-space: nowrap;
+    &.not-old-enough {
+      opacity: 0.6;
+    }
+    &.selected {
+      border: $connector-width solid #f3b;
+    }
   }
 }
 
 .sub-employees {
-  margin-left: calc(#{$employee-width} + 15px);
-
-  &::before {
-    display: block;
-    position: absolute;
-    content: '';
-    width: $connector-width;
-    top: calc(#{$employee-height} + #{$employee-margin-top} + 10px);
-    bottom: calc(#{$employee-height} / 2 + 10px);
-    background: $connector-color;
-    left: calc(#{$employee-width} / 2);
-  }
+  display: flex;
+  justify-content: center;
 
   .sub-employee {
-    display: block;
-    position: relative;
+    padding: 0 15px;
 
-    &:last-child {
-      &::after {
-        display: none;
-      }
+    // connector up to horizontal line
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: $connector-color;
+      left: 0;
+      left: 50%;
+      top: 0;
+      transform: translateY(-100%) translateX(-50%);
+      width: $connector-width;
+      height: 25px;
+    }
+
+    // horizontal connector
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: $connector-color;
+      left: 0;
+      top: -25px;
+      transform: translateY(-100%);
+      height: $connector-width;
+      width: 100%;
+    }
+    &:first-child::after {
+      left: 50%;
+      width: 50%;
+    }
+    &:last-child::after {
+      width: 50%;
+    }
+    &:only-child::after {
+      display: none;
     }
   }
 }

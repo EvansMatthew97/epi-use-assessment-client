@@ -27,11 +27,15 @@ $sidebar-width: 300px;
   }
 
   .main-canvas {
+    display: flex;
     padding: 40px;
     background-image: url('/assets/images/grid.png');
     background-repeat: repeat;
     min-width: 100vw;
     min-height: 100vw;
+    .employee {
+      margin: 0 50px;
+    }
   }
 }
 

@@ -48,6 +48,18 @@ export class EmployeeService {
    */
   async fetchEmployees() {
     this.employees = await this.api.get('/employee', {});
+    this.employees = this.employees.sort((a, b) => {
+      if (a.surname < b.surname) {
+        return -1;
+      } else if (a.surname > b.surname) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 1;
+    });
+
     this.employeeMap = this.employees.reduce((ob, employee: Employee) => {
       ob[employee.id] = employee;
       return ob;

@@ -1,13 +1,15 @@
-<div *ngIf="employee" class="employee"
-  [class.selected]="employee.id === selectedId"
-  [class.not-old-enough]="!isOlderThanDate()"
-  [class.searched-for]="isSearchedFor()"
-  [class.is-root]="!employee.reportsTo"
-  (click)="clickEmployee(employee)"
->
-  <div class="title"><b>{{ employee.name }} {{ employee.surname }}</b> ({{ employee.id }})</div>
-  <div>{{ employee.birthdate | customDate }}</div>
-  <div>{{ employeeRolesMap[employee.role].name }} - {{ employee.salary | currency:'R' }}</div>
+<div class="employee-container" [class.leaf]="!employee.oversees.length">
+  <div *ngIf="employee" class="employee"
+    [class.selected]="employee.id === selectedId"
+    [class.not-old-enough]="!isOlderThanDate()"
+    [class.searched-for]="isSearchedFor()"
+    [class.is-root]="!employee.reportsTo"
+    (click)="clickEmployee(employee)"
+  >
+    <div class="title"><b>{{ employee.name }} {{ employee.surname }}</b> ({{ employee.id }})</div>
+    <div>{{ employee.birthdate | customDate }}</div>
+    <div>{{ employeeRolesMap[employee.role].name }} - {{ employee.salary | currency:'R' }}</div>
+  </div>
 </div>
 <div class="sub-employees" *ngIf="employee.oversees.length">
   <app-employee class="sub-employee" *ngFor="let emp of employee.oversees"

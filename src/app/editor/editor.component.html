@@ -1,7 +1,7 @@
 <div class="main">
   <pan-zoom [config]="zoomConfig">
     <div class="main-canvas">
-      <app-employee *ngFor="let employee of hierarchy"
+      <app-employee class="employee" *ngFor="let employee of hierarchy"
         [employee]="employee"
         [selectedId]="selectedId"
         [olderThan]="employeesOlderThan"
