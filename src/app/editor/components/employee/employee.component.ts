@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Employee } from 'src/app/interfaces/employee.interface';
-import { EmployeeRole } from '../../../interfaces/employee-role.interface';
+import { Employee } from 'src/app/editor/interfaces/employee.interface';
+import { EmployeeRole } from '../../interfaces/employee-role.interface';
 
 @Component({
   selector: 'app-employee',

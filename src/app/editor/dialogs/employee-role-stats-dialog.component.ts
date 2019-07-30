@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { EmployeeRole } from '../../interfaces/employee-role.interface';
+import { EmployeeRole } from '../interfaces/employee-role.interface';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { Employee } from 'src/app/interfaces/employee.interface';
+import { Employee } from 'src/app/editor/interfaces/employee.interface';
 
 export interface EmployeeRoleStatsDialogData {
   stats: Array<{

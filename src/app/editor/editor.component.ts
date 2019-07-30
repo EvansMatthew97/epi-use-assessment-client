@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PanZoomConfig } from 'ng2-panzoom';
-import { Employee } from '../interfaces/employee.interface';
+import { Employee } from './interfaces/employee.interface';
 import { ApiService } from '../api/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EmployeeRole } from '../interfaces/employee-role.interface';
+import { EmployeeRole } from './interfaces/employee-role.interface';
 import { MatDialog } from '@angular/material';
 import { ConfirmEmployeeDeleteDialogComponent, ConfirmDeleteEmployeeData } from './dialogs/confirm-employee-delete.component';
 import { EmployeeRolestatsDialogComponent } from './dialogs/employee-role-stats-dialog.component';
