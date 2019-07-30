@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { EmployeeRole } from '../interfaces/employee-role.interface';
+import { EmployeeRole } from '../../employee/interfaces/employee-role.interface';
 
 export interface ConfirmDeleteRoleDialogData {
   roles: EmployeeRole[];

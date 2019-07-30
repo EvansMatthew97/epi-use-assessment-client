@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Employee } from 'src/app/editor/interfaces/employee.interface';
+import { Employee } from 'src/app/employee/interfaces/employee.interface';
 
 export interface ConfirmDeleteEmployeeData {
   employee: Employee;

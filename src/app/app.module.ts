@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { ApiModule } from './api/api.module';
-import { MAT_DATE_LOCALE } from '@angular/material';
+import { EmployeeModule } from './employee/employee.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { MAT_DATE_LOCALE } from '@angular/material';
     AppRoutingModule,
 
     ApiModule.forRoot(),
+    EmployeeModule.forRoot(),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'en-ZA' },

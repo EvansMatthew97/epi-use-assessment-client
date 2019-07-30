@@ -1,25 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, } from '@angular/core';
 import { PanZoomConfig } from 'ng2-panzoom';
-import { Employee } from './interfaces/employee.interface';
-import { ApiService } from '../api/api.service';
+import { Employee } from '../employee/interfaces/employee.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EmployeeRole } from './interfaces/employee-role.interface';
+import { EmployeeRole } from '../employee/interfaces/employee-role.interface';
 import { MatDialog } from '@angular/material';
 import { ConfirmEmployeeDeleteDialogComponent, ConfirmDeleteEmployeeData } from './dialogs/confirm-employee-delete.component';
 import { EmployeeRolestatsDialogComponent } from './dialogs/employee-role-stats-dialog.component';
 import { ConfirmDeleteRoleDialogComponent } from './dialogs/confirm-delete-role-dialog.component';
+import { EmployeeService } from '../employee/employee.service';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss'],
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent {
+  // editor pan/zoom canvas configuration
   zoomConfig: PanZoomConfig = new PanZoomConfig({
     freeMouseWheelFactor: 0.01,
   });
 
+  // the employee hierarchy
   hierarchy: Employee[] = [];
+  // the currently-selected employee
   selectedId = null;
 
   employeeRoles: EmployeeRole[] = [];
@@ -48,46 +51,20 @@ export class EditorComponent implements OnInit {
   saveEmployeeError = null;
 
   constructor(
-    private readonly api: ApiService,
+    private readonly employeeService: EmployeeService,
     private readonly dialog: MatDialog,
-  ) {}
-
-  ngOnInit() {
-    this.fetchData();
+  ) {
+    this.employeeService.employees$.subscribe(employees => this.employees = employees);
+    this.employeeService.employeeMap$.subscribe(employeeMap => this.employeeMap = employeeMap);
+    this.employeeService.employeeHierarchy$.subscribe(employeeHierarchy => this.hierarchy = employeeHierarchy);
+    this.employeeService.employeeRoles$.subscribe(roles => this.employeeRoles = roles);
+    this.employeeService.employeeRolesMap$.subscribe(rolesMap => this.employeeRoleMap = rolesMap);
   }
 
-  async fetchData() {
-    // fetch employee roles
-    this.employeeRoles = (await this.api.get('/employee-role', {})).reverse();
-    this.employeeRoleMap = this.employeeRoles.reduce((ob, role) => {
-      ob[role.id] = role;
-      return ob;
-    }, {});
-
-    // fetch employees
-    this.employees = await this.api.get('/employee', {});
-    this.employeeMap = this.employees.reduce((ob, employee: Employee) => {
-      ob[employee.id] = employee;
-      return ob;
-    }, {});
-
-    // get employee hierarchy
-    const hierarchy = await this.api.get('/employee/hierarchy', {});
-
-    const recursiveMapHierarchy = (employee) => {
-      employee.reportsTo = this.employeeMap[employee.id].reportsTo;
-      employee.role = this.employeeMap[employee.id].role;
-      employee.oversees.forEach(child => recursiveMapHierarchy(child));
-    };
-    hierarchy.forEach(recursiveMapHierarchy);
-
-    this.hierarchy = hierarchy;
-
-    console.log(this.hierarchy);
-    console.log(this.employees);
-  }
-
-
+  /**
+   * Selects an employee to show details in the employee details
+   * editor in the sidebar.
+   */
   selectEmployee(employeeId) {
     this.creatingEmployee = false;
     this.selectedId = employeeId;
@@ -106,29 +83,13 @@ export class EditorComponent implements OnInit {
     group.get('reportsTo').setValue(employee.reportsTo);
     group.get('role').setValue(employee.role);
 
-    // find all employees who the selected emplyoee can report to
-    // (no child tree nodes or themself)
-    const recursiveDescendantSearch = (emp: Employee, descendantIds = []) => {
-      descendantIds.push(emp.id);
-
-      (emp.oversees || []).forEach(childId => {
-        const child = this.employeeMap[childId];
-        descendantIds.push(...recursiveDescendantSearch(child));
-      });
-
-      return descendantIds;
-    };
-
-    const descendantIds: {[id: number]: boolean} = recursiveDescendantSearch(employee).reduce((ob, empId) => {
-      ob[empId] = true;
-      return ob;
-    }, {});
-
-    console.log(descendantIds);
-
-    this.employeeCanReportTo = this.employees.filter(emp => !descendantIds[emp.id]);
+    this.employeeCanReportTo = this.employeeService.employeeCanReportTo(employee);
   }
 
+  /**
+   * Searches the employees by ID and by name/surname.
+   * If numeric, searches by ID, otherwise by name and surname.
+   */
   searchEmployees() {
     // if searching a number, then searching for employee number
     if (/\d+/.test(this.searchTerm)) {
@@ -154,18 +115,28 @@ export class EditorComponent implements OnInit {
     });
   }
 
+  /**
+   * Fired when the date filter changes
+   */
   changeOlderThanDate($event) {
     this.changeOlderThanDate = $event.value;
   }
 
+  /**
+   * Set the employee editor state to creating a new employee.
+   * Resets the form details.
+   */
   addEmployee() {
     this.employeeDetailsFormGroup.reset();
     this.employeeDetailsFormGroup.get('employeeNumber').disable();
     this.employeeDetailsFormGroup.get('birthdate').setValue(new Date());
-    this.creatingEmployee = true;
-    this.employeeCanReportTo = this.employees;
+    this.creatingEmployee = true; // set the state
+    this.employeeCanReportTo = this.employees; // a new employee can report to anyone
   }
 
+  /**
+   * Save an employee's details
+   */
   async saveEmployee() {
     const group = this.employeeDetailsFormGroup;
     if (!group.valid) {
@@ -173,18 +144,21 @@ export class EditorComponent implements OnInit {
     }
 
     try {
-      const employee = await this.api.post('/employee/save', {
-        employeeNumber: group.get('employeeNumber').value,
+      // save the employee
+      const employee = await this.employeeService.saveEmployee({
+        id: group.get('employeeNumber').value,
         name: group.get('name').value,
         surname: group.get('surname').value,
-        birthdate: new Date(group.get('birthdate').value).toISOString(),
+        birthdate: new Date(group.get('birthdate').value),
         salary: group.get('salary').value,
-        reportsToEmployeeId: group.get('reportsTo').value,
-        employeeRoleId: group.get('role').value,
+        reportsTo: group.get('reportsTo').value,
+        role: group.get('role').value,
+        oversees: [],
       });
-      await this.fetchData();
 
+      // the employee id is now the id that the server generated for the employee
       this.selectEmployee(employee.id);
+
       this.creatingEmployee = false;
       this.saveEmployeeError = null;
     } catch (error) {
@@ -197,10 +171,15 @@ export class EditorComponent implements OnInit {
     }
   }
 
+  /**
+   * Remove an employee. Displays a dialog to confirm deletion.
+   */
   deleteEmployee() {
+    // get the id of the dialog from the employee details editor
     const employeeNumber = this.employeeDetailsFormGroup.get('employeeNumber').value;
     const employee = this.employeeMap[employeeNumber];
 
+    // create the dialog box
     const dialogRef = this.dialog.open(ConfirmEmployeeDeleteDialogComponent, {
       data: {
         employee,
@@ -209,31 +188,33 @@ export class EditorComponent implements OnInit {
     dialogRef.afterClosed().subscribe(async consented => {
       console.log('closed', consented);
       if (!consented) {
+        // user cancelled
         return;
       }
 
-      await this.api.post('/employee/remove', {
-        employeeNumber,
-      });
-      await this.fetchData();
+      // user consented - delete
+      await this.employeeService.removeEmployee(employeeNumber);
     });
   }
 
+  /**
+   * Add a new role with default name 'New Role'
+   */
   async addRole() {
-    await this.api.post('/employee-role/save', {
-      name: 'New role',
-    });
-    await this.fetchData();
+    await this.employeeService.addRole('New Role');
   }
 
+  /**
+   * Updates an employee role
+   */
   async updateRole(id, name) {
-    await this.api.post('/employee-role/save', {
-      id,
-      name,
-    });
-    await this.fetchData();
+    await this.employeeService.updateRole(id, name);
   }
 
+  /**
+   * Removes a role. A dialog box is presented to ask the user
+   * which role to replace it with.
+   */
   removeRole(id) {
     const otherRoles = this.employeeRoles.filter(role => role.id !== id);
 
@@ -249,24 +230,15 @@ export class EditorComponent implements OnInit {
         return;
       }
 
-      console.log(id, replaceWith);
-      await this.api.post('/employee-role/remove', {
-        roleToRemoveId: id,
-        roleToReplaceId: replaceWith,
-      });
-
-      await this.fetchData();
+      await this.employeeService.removeRole(id, replaceWith);
     });
   }
 
+  /**
+   * Present a dialog box with stats about employee role salaries
+   */
   async showRoleStats() {
-    const roleStats = await this.api.get('/employee-role/highest-earning-by-role', {});
-
-    const stats = Object.keys(roleStats).map(roleId => ({
-      role: this.employeeRoleMap[roleId],
-      employee: this.employeeMap[roleStats[roleId].id],
-    }));
-
+    const stats = await this.employeeService.getRoleStats();
     console.log(stats);
 
     this.dialog.open(EmployeeRolestatsDialogComponent, {

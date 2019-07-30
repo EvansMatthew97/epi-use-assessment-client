@@ -13,6 +13,7 @@ import { EmployeeRolestatsDialogComponent } from './dialogs/employee-role-stats-
 import { ConfirmDeleteRoleDialogComponent } from './dialogs/confirm-delete-role-dialog.component';
 import { DDMMYYYFormat } from '../util/constants/date-format';
 import { UtilModule } from '../util/util.module';
+import { EmployeeModule } from '../employee/employee.module';
 
 @NgModule({
   imports: [
@@ -40,7 +41,7 @@ import { UtilModule } from '../util/util.module';
     MatIconModule,
 
     UtilModule,
-    ApiModule,
+    EmployeeModule,
   ],
   providers: [
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
