@@ -27,7 +27,7 @@
     "@angular/router": "~8.1.3",
     "core-js": "^3.1.4",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "material-design-icons": "^3.0.1",
     "moment": "^2.24.0",
     "ng2-panzoom": "^2.2.2",
