@@ -29,7 +29,7 @@
     "express": "^4.17.1",
     "jquery": "^3.4.1",
     "material-design-icons": "^3.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ng2-panzoom": "^2.2.2",
     "path": "^0.12.7",
     "rxjs": "~6.5.2",
